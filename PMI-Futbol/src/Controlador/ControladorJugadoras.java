@@ -1,5 +1,5 @@
 
-package Controller;
+package Controlador;
 
 import Model.Jugadora;
 import java.util.HashMap;
