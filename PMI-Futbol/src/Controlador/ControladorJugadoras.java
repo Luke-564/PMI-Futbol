@@ -1,8 +1,8 @@
-
-package Controller;
+package Controlador;
 
 import Model.Jugadora;
 import java.util.HashMap;
+import Model.Fecha; //este es solo necesario si mi duda es verdad
 
 public class ControladorJugadoras {
     
@@ -56,6 +56,30 @@ public class ControladorJugadoras {
         this.equipos = equipos;
     }
     
+    /*Okey, estos setters son en caso de que mi duda sea cierta, mi duda es: la
+    profe dijo en una clase que era medio al pedo ir mandando, desde la vista 
+    hacia el controlador, string por string (los datos de la jugadora, uno por
+    uno), que seria mas facil mandar directamente una jugadora ya cargada. Pero,
+    en una clase tambien nos dijo que no habia que darle el acceso del modelo a
+    la vista. Así que estos setters van a ser solo en caso que no haya que darle
+    acceso del modelo a la vista
+    */
+                /*
+    public void setDatosJugadora(String nombre, String apellido, Fecha nacimiento,
+            String nacionalidad, String posicion, String club, int goles,
+            int amarillas, int rojas) {
+        this.jugadora.setNombre(nombre);
+        this.jugadora.setApellido(apellido);
+        this.jugadora.setNacimiento(nacimiento);
+        this.jugadora.setNacionalidad(nacionalidad);
+        this.jugadora.setPosicion(posicion);
+        this.jugadora.setClub(club);
+        this.jugadora.setGoles(goles);
+        this.jugadora.setT_Amarillas(amarillas);
+        this.jugadora.setT_Rojas(rojas);      
+    }
+                */
+    
     //Metodos 
     
     //devuelve una jugadora de la lista de jugadoras, la busca por el nombre
@@ -66,14 +90,16 @@ public class ControladorJugadoras {
             if (nombre.equalsIgnoreCase(nombreJu)){
                 return listaJu[i];
             }
-        }//Poner un try catch en caso de no encontrar a la jugadora
+        }
+        Jugadora jus = null; //Poner un try catch en caso de no encontrar a la jugadora
+        return jus;
     } 
     
     //Agrega una jugadora a la lista 
     public void setListaJu(Jugadora ju) {
         int i = this.listaJu.length;
         this.listaJu[i + 1] = ju;
-    }
+    }//poner un try catch en caso de que el arreglo este en 70
     
     //Aumenta el numero de jugadoras de un equipo
     public void setEquipos(Jugadora ju) {
@@ -84,26 +110,31 @@ public class ControladorJugadoras {
     }
 
     //Elimina una jugadora de la lista, por nombre de jugadora
-    public void eliminarJugadora(String nombre) {
+    public int eliminarJugadora(String nombre) {
         for(int i = 0; i < listaJu.length; i++) {
             Jugadora ju = listaJu[i];
             String nombreJu = ju.getNombre();
             if (nombre.equalsIgnoreCase(nombreJu)){
+                //si la encuentra, tambien eliminarla del equipo
                 this.listaJu[i] = null;
+                return i;
             }
         }
+        return 0;//poner un try cath por si esta funcion retorna 0
     }
     
-    //metodo para el arreglo de Jugadoras
+    //metodo para mover el arreglo de Jugadoras en caso de eliminar una jugadora
     public void moverLista(int i) {
-        for (i < listaJu.length; i++) {
-            
-        }
-    }   
-    
-    public int cantidadJugadoras() {
-        
-        
-        return 0;
+        for ( int j = i; j < listaJu.length; j++) {
+            Jugadora juAux = listaJu[j+1];
+            listaJu[j] = juAux;
+        }    
     }
+    
+    //Devuelve la cantidad de jugadoras de un equipo, equipo pasado por parametro
+    public int cantidadJugadorasPorEquipo(String equipo) {
+        int i = equipos.get(equipo);
+        return i;
+    }
+    
 }
