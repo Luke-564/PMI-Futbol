@@ -1,7 +1,8 @@
- 
 package Model;
 
-public class Jugadora extends Persona {
+//import java.util.Collections;
+
+public class Jugadora extends Persona implements Comparable <Jugadora> {
     //Variables de instancia
     private String posicion;
     private String club;
@@ -11,7 +12,8 @@ public class Jugadora extends Persona {
     //Constructores
     public Jugadora() {
     }
-    public Jugadora(String posicion, String club, int goles, int t_Amarillas, int t_Rojas) {
+    public Jugadora(String posicion, String club, int goles, int t_Amarillas,
+            int t_Rojas) {
         this.posicion = posicion;
         this.club = club;
         this.goles = goles;
@@ -19,8 +21,8 @@ public class Jugadora extends Persona {
         this.t_Rojas = t_Rojas;
     }
     public Jugadora(String posicion, String club, int goles, int t_Amarillas, int t_Rojas,
-            String nombre, String apellido, Fecha nacimiento, String nacionalidad) {
-        super(nombre, apellido, nacimiento, nacionalidad);
+            String nombre, String apellido, Fecha nacimiento, String nacionalidad, int codigo) {
+        super(nombre, apellido, nacimiento, nacionalidad, codigo);
         this.posicion = posicion;
         this.club = club;
         this.goles = goles;
@@ -66,6 +68,10 @@ public class Jugadora extends Persona {
                 ", goles=" + goles + ", t_Amarillas=" + t_Amarillas +
                 ", t_Rojas=" + t_Rojas + '}';
     }
-    //Metodos
+    //CompareTo
+    @Override
+    public int compareTo(Jugadora otra) {
+        return otra.getT_Rojas() - this.t_Rojas;
+    }
 
 }
