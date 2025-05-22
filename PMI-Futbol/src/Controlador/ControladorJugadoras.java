@@ -1,15 +1,18 @@
+
 package Controlador;
 
 import Model.Jugadora;
 import java.util.HashMap;
-import Model.Fecha; //este es solo necesario si mi duda es verdad
+import Model.Fecha;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class ControladorJugadoras {
     
     //Variables de instancia
     
     private Jugadora jugadora = new Jugadora ();
-    private Jugadora [] listaJu; 
+    private ArrayList <Jugadora> listaJu; 
     private HashMap<String, Integer> equipos;
     
     //Constructores
@@ -17,26 +20,27 @@ public class ControladorJugadoras {
     //Vacio
     public ControladorJugadoras() {
         this.equipos = new HashMap<>();
-        this.listaJu = new Jugadora [70];
+        this.listaJu = new ArrayList<>();
     }
     //solo guarda una jugadora, no se si este lo lleguemos a usar
     public ControladorJugadoras(Jugadora juga) {
         this.equipos = new HashMap<>();
-        this.listaJu = new Jugadora [70];
+        this.listaJu = new ArrayList<>();
         this.jugadora = juga;
     }
     /*Construye la lista y los equipos, muy importante para pasar la informacion
     del main al constructor*/
-    public ControladorJugadoras(HashMap mapa, Jugadora[] lista) {
+    public ControladorJugadoras(HashMap mapa, ArrayList lista) {
         this.equipos = mapa;
         this.listaJu = lista;
     }
     
     //Getters
+    
     public Jugadora getJuga() {
         return jugadora;
     }
-    public Jugadora[] getListaJu() {
+    public ArrayList getListaJu() {
         return listaJu;
     }
     public HashMap<String, Integer> getEquipos() {
@@ -44,51 +48,69 @@ public class ControladorJugadoras {
     }
     
     //Setters
-    //No me construye los setters automaticamente :C
-    //fue, los hago solita
+
     public void setJugadora(Jugadora jugadora) {
         this.jugadora = jugadora;
     }
-    public void setListaJu(Jugadora[] lista) {
+    public void setListaJu(ArrayList lista) {
         this.listaJu = lista;
     }
     public void setEquipos(HashMap<String, Integer> equipos) {
         this.equipos = equipos;
-    }
-    
-    /*Okey, estos setters son en caso de que mi duda sea cierta, mi duda es: la
-    profe dijo en una clase que era medio al pedo ir mandando, desde la vista 
-    hacia el controlador, string por string (los datos de la jugadora, uno por
-    uno), que seria mas facil mandar directamente una jugadora ya cargada. Pero,
-    en una clase tambien nos dijo que no habia que darle el acceso del modelo a
-    la vista. Así que estos setters van a ser solo en caso que no haya que darle
-    acceso del modelo a la vista
-    */
-                /*
-    public void setDatosJugadora(String nombre, String apellido, Fecha nacimiento,
-            String nacionalidad, String posicion, String club, int goles,
-            int amarillas, int rojas) {
+    }    
+    public void setJugadoraNombre(String nombre) {
         this.jugadora.setNombre(nombre);
-        this.jugadora.setApellido(apellido);
-        this.jugadora.setNacimiento(nacimiento);
-        this.jugadora.setNacionalidad(nacionalidad);
-        this.jugadora.setPosicion(posicion);
-        this.jugadora.setClub(club);
-        this.jugadora.setGoles(goles);
-        this.jugadora.setT_Amarillas(amarillas);
-        this.jugadora.setT_Rojas(rojas);      
     }
-                */
+    public void setJugadoraApellido(String apellido) {
+        this.jugadora.setApellido(apellido);
+    }
+    public void setJugadoraNacimiento(Fecha nacimiento) {
+        this.jugadora.setNacimiento(nacimiento);
+    }
+    public void setJugadoraNacionalidad(String nacionalidad) {
+        this.jugadora.setNacionalidad(nacionalidad);
+    }
+    public void setJugadoraPosicion(String posicion) {
+        this.jugadora.setPosicion(posicion);
+    }
+    public void setJugadoraClub(String club) {
+        this.jugadora.setClub(club);
+    }
+    public void setJugadoraGoles(int goles) {
+        this.jugadora.setGoles(goles);
+    }
+    public void setJugadoraT_Amarillas(int amarillas) {
+        this.jugadora.setT_Amarillas(amarillas);
+    }
+    public void setJugadoraT_Rojas(int rojas) {
+        this.jugadora.setT_Rojas(rojas);
+    }
+    public void setJugadoraCodigoAutomatico() {
+        this.jugadora.setCodigo(0);//hacer algo para que sea automatico
+    }
     
     //Metodos 
     
-    //devuelve una jugadora de la lista de jugadoras, la busca por el nombre
-    public Jugadora getJugadoraDeLaLista(String nombre) {
-        for(int i = 0; i < listaJu.length; i++) {
-            Jugadora ju = listaJu[i];
+    //Hace una lista temporal de las jugadoras con el mismo nombre
+    public ArrayList getJugadorasDeLaLista(String nombre) {
+        ArrayList <Jugadora> listaTemp = new ArrayList<>();
+        for(int i = 0; i < listaJu.size(); i++) {
+            Jugadora ju = listaJu.get(i);
             String nombreJu = ju.getNombre();
             if (nombre.equalsIgnoreCase(nombreJu)){
-                return listaJu[i];
+                listaTemp.add(ju);
+            }
+        }
+        //Poner un try catch en caso de no encontrar a la jugadora
+        return listaTemp;
+    } 
+    //devuelve una jugadora de la lista de jugadoras, la busca por el codigo
+    public Jugadora getJugadoraDeLaListaCodigo(int codigo) {
+        for(int i = 0; i < listaJu.size(); i++) {
+            Jugadora ju = listaJu.get(i);
+            int cod = ju.getCodigo();
+            if (cod == codigo){
+                return listaJu.get(i);
             }
         }
         Jugadora jus = null; //Poner un try catch en caso de no encontrar a la jugadora
@@ -97,9 +119,9 @@ public class ControladorJugadoras {
     
     //Agrega una jugadora a la lista 
     public void setListaJu(Jugadora ju) {
-        int i = this.listaJu.length;
-        this.listaJu[i + 1] = ju;
-    }//poner un try catch en caso de que el arreglo este en 70
+        this.listaJu.add(ju);
+        setEquipos(ju);
+    }//poner un try catch para saber si el equipo ya tiene 7 jugadoras
     
     //Aumenta el numero de jugadoras de un equipo
     public void setEquipos(Jugadora ju) {
@@ -109,32 +131,75 @@ public class ControladorJugadoras {
         }//poner un try catch para verificar cantidad de jugadoras en equipo
     }
 
-    //Elimina una jugadora de la lista, por nombre de jugadora
-    public int eliminarJugadora(String nombre) {
-        for(int i = 0; i < listaJu.length; i++) {
-            Jugadora ju = listaJu[i];
-            String nombreJu = ju.getNombre();
-            if (nombre.equalsIgnoreCase(nombreJu)){
+    //Elimina una jugadora de la lista, por codigo
+    public int eliminarJugadora(int codigo) {
+        for(int i = 0; i < listaJu.size(); i++) {
+            Jugadora ju = listaJu.get(i);
+            int codigoJu = ju.getCodigo();
+            if (codigoJu == codigo){
                 //si la encuentra, tambien eliminarla del equipo
-                this.listaJu[i] = null;
+                String equipo = ju.getClub();
+                eliminarDeEquipo(equipo);
+                this.listaJu.remove(i);
                 return i;
             }
         }
         return 0;//poner un try cath por si esta funcion retorna 0
     }
     
-    //metodo para mover el arreglo de Jugadoras en caso de eliminar una jugadora
-    public void moverLista(int i) {
-        for ( int j = i; j < listaJu.length; j++) {
-            Jugadora juAux = listaJu[j+1];
-            listaJu[j] = juAux;
-        }    
-    }
-    
     //Devuelve la cantidad de jugadoras de un equipo, equipo pasado por parametro
     public int cantidadJugadorasPorEquipo(String equipo) {
         int i = equipos.get(equipo);
-        return i;
+        return i;//poner try catch por las dudas
     }
     
+    //elimina de equipo
+    public int eliminarDeEquipo(String club) {
+        int i = this.equipos.get(club);
+        i--;
+        this.equipos.put(club, i);
+        return 0; //poner un try catch por si el equipo tiene menos de 5 jugadoras
+    }
+    
+    //devuelve una lista con las jugadoras que superen cierta cantidad de goles
+    public ArrayList cantGoles(int cant) {
+        ArrayList <Jugadora> listAux = new ArrayList <>();
+        for (int i = 0; i < listaJu.size(); i++) {
+            Jugadora jugAux = listaJu.get(i);
+            int goles = jugAux.getGoles();
+            if (cant <= goles){
+                listAux.add(jugAux);
+            }
+        }
+        return listAux;
+    }//poner try catch por si no existe jugadoras  
+    
+    //devuelve una lista con las jugadoras que mas expulsiones tuvieron
+    public ArrayList masExpulsiones () {
+        Collections.sort(this.listaJu);
+        ArrayList <Jugadora> lisAux = new ArrayList <>();
+        Jugadora jugAux = this.listaJu.get(0);
+        lisAux.add(jugAux);
+        int t_R_aux = jugAux.getT_Rojas();
+        for (int i = 1; i < listaJu.size(); i++){
+            Jugadora jugAux2 = listaJu.get(i);
+            int t_R_aux2 = jugAux2.getT_Rojas();
+            if (t_R_aux == t_R_aux2){
+                lisAux.add(jugAux2);
+            }
+        }
+        return lisAux;
+    }//pondria un try catch, pero no se donde
+    
+    //Devuelve cuantas jugadoras de cierta posicion
+    public int jugadorasDePosicion(String posicion) {
+        int cuantas = 0;
+        for (Jugadora juAux : listaJu) {
+            String posAux = juAux.getPosicion();
+            if (posicion.equals(posAux)) {
+                cuantas ++;
+            }
+        }
+        return cuantas;
+    }
 }
