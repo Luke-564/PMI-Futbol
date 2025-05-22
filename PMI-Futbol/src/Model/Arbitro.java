@@ -1,4 +1,3 @@
-
 package Model;
 
 public class Arbitro extends Persona {
@@ -13,8 +12,8 @@ public class Arbitro extends Persona {
         this.internacional = internacional;
     }
     public Arbitro(int tarjetas, boolean internacional, String nombre, 
-            String apellido, Fecha nacimiento, String nacionalidad) {
-        super(nombre, apellido, nacimiento, nacionalidad);
+            String apellido, Fecha nacimiento, String nacionalidad, int codigo) {
+        super(nombre, apellido, nacimiento, nacionalidad,codigo);
         this.tarjetas = tarjetas;
         this.internacional = internacional;
     }
