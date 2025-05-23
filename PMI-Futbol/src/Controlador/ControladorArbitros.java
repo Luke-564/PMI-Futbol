@@ -2,25 +2,34 @@
 package Controlador;
 
 import Model.Arbitro;
+import Model.Fecha;
 import java.util.ArrayList;
 
 public class ControladorArbitros {
     
-        //Variables de instancia
+/*Variables de instancia*/
 
-    private final Arbitro arbitro = new Arbitro();
+    private Arbitro arbitro ;
     private final ArrayList<Arbitro> listaArbitros;
     private final ArrayList<Arbitro> listaTempArbitros;
 
+    
+/*Constructores*/
+    
+        //Constructor vacio
     public ControladorArbitros(){
+        this.arbitro = new Arbitro();
         this.listaArbitros = new ArrayList<>();
         this.listaTempArbitros = new ArrayList<>();
     }
+        //Constructor lleno
     public ControladorArbitros(Arbitro arbitro, ArrayList<Arbitro> listaArbitros, ArrayList<Arbitro> listaTempArbitros) {
         this.listaArbitros = listaArbitros;
         this.listaTempArbitros = listaTempArbitros;
     }
-
+    
+/*Getters*/
+    
     public Arbitro getArbitro() {
         return arbitro;
     }
@@ -32,13 +41,45 @@ public class ControladorArbitros {
     public ArrayList<Arbitro> getListaTempArbitros() {
         return listaTempArbitros;
     }
-
-
-    public void AddArbitro(Arbitro arbitro){
+    
+/*Setters*/
+    
+        //Variables generales de Persona
+    public void setArbitro(Arbitro arbitro){
+        this.arbitro = arbitro;
+    }
+    public void setArbitroNombre(String nombre){
+        this.arbitro.setNombre(nombre);
+    }
+    public void setArbitroApellido(String apellido){
+        this.arbitro.setApellido(apellido);
+    }
+    public void setArbitroNacimiento(Fecha nacimiento){
+        this.arbitro.setNacimiento(nacimiento);
+    }
+    public void setArbitroNacionalidad(String nacionalidad){
+        this.arbitro.setNacionalidad(nacionalidad);
+    }
+    public void setArbitroCodigo(){
+        this.arbitro.setCodigo(0);
+    }
+        //Variables unicas de Arbitro
+    public void setArbitroTarjetas(int tarjetas){
+        this.arbitro.setTarjetas(tarjetas);
+    }
+    public void setArbitroInternacional(boolean internacional){
+        this.arbitro.setInternacional(internacional);
+    }
+    
+/*Metodos*/
+    
+        //Añade un arbitro a la lista
+    public void setArbitroLista(Arbitro arbitro){
         this.listaArbitros.add(arbitro);
     }
     
-    public void GetArbitroPorNombre(String nombre, String apellido){
+        //Carga todos los arbitros con el mismo en la lista temporal
+    public void getArbitroPorNombre(String nombre, String apellido){
         this.listaTempArbitros.clear();
         for(Arbitro i : this.listaArbitros){
                 if(i.getNombre().equals(nombre) && i.getApellido().equals(apellido)){
@@ -46,8 +87,8 @@ public class ControladorArbitros {
             }
         }
     }
-    
-    public Arbitro GetArbitroPorCodigo(int codigo){
+        //Retorna un arbitro con el codigo coincidente
+    public Arbitro getArbitroPorCodigo(int codigo){
         for(Arbitro i : this.listaArbitros){
             if(i.getCodigo() == codigo){
                 return i;
@@ -56,8 +97,9 @@ public class ControladorArbitros {
         Arbitro arbitroNulo = null;
         return arbitroNulo;
     }
-    //Almacena en la lista temporal los arbitros internacionales
-    public void GetArbitrosInternacionales(){
+    
+        //Almacena en la lista temporal los arbitros internacionales
+    public void getArbitrosInternacionales(){
         this.listaTempArbitros.clear();
         for(Arbitro i : this.listaArbitros){
             if(i.isInternacional()){
@@ -65,8 +107,9 @@ public class ControladorArbitros {
             }
         }
     }
-    //Almacena en la lista temporal los arbitros Nacionales
-    public void GetArbitrosNacionales(){
+    
+        //Almacena en la lista temporal los arbitros Nacionales
+    public void getArbitrosNacionales(){
         this.listaTempArbitros.clear();
         for(Arbitro i : this.listaArbitros){
             //If negado, osea que no sea internacional
@@ -76,5 +119,26 @@ public class ControladorArbitros {
         }
     }
     
+        //Elimina el arbitro por codigo, Si se encuentra y lo elimina devuelve verdadero, si no se encuentra devuelve falso
+    public boolean eliminarArbitroLista(int codigo){
+        for(int i = 0; i< this.listaArbitros.size(); i++){
+            if(this.listaArbitros.get(i).getCodigo() == codigo){
+                this.listaArbitros.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+        //Modifica el arbitro reemplazando al original. Si no encuentra al arbitro retona falso
+    public boolean modificarArbitroLista(Arbitro arbitro, int codigo){
+        for(int i = 0; i < this.listaArbitros.size(); i++){
+            if(codigo == this.listaArbitros.get(i).getCodigo()){
+                this.listaArbitros.remove(i);
+                this.listaArbitros.set(i, arbitro);
+                return true;
+            }
+        }
+        return false;
+    }
     
 }
