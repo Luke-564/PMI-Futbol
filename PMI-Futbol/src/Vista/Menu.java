@@ -33,6 +33,7 @@ public class Menu extends javax.swing.JFrame {
         Btt_TRojas_Jug = new javax.swing.JRadioButton();
         Pestanias_Menu_Jugadoras = new javax.swing.JTabbedPane();
         Panel_Cargar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         Panel_Eliminar = new javax.swing.JPanel();
         Panel_Actualizar = new javax.swing.JPanel();
         Panel_BusCodigo = new javax.swing.JPanel();
@@ -141,15 +142,27 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        Pestanias_Menu_Jugadoras.setBackground(new java.awt.Color(248, 255, 252));
+
+        Panel_Cargar.setBackground(new java.awt.Color(239, 255, 245));
+
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout Panel_CargarLayout = new javax.swing.GroupLayout(Panel_Cargar);
         Panel_Cargar.setLayout(Panel_CargarLayout);
         Panel_CargarLayout.setHorizontalGroup(
             Panel_CargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addGroup(Panel_CargarLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addContainerGap(480, Short.MAX_VALUE))
         );
         Panel_CargarLayout.setVerticalGroup(
             Panel_CargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGroup(Panel_CargarLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addContainerGap(385, Short.MAX_VALUE))
         );
 
         Pestanias_Menu_Jugadoras.addTab("tab1", Panel_Cargar);
@@ -296,32 +309,34 @@ public class Menu extends javax.swing.JFrame {
         Pestania_JugadorasLayout.setVerticalGroup(
             Pestania_JugadorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Pestania_JugadorasLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(Lbl_Jug_Menu)
-                .addGap(18, 18, 18)
-                .addComponent(Btt_Cargar_Jug)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Btt_Eliminar_Jug)
-                .addGap(8, 8, 8)
-                .addComponent(Btt_Actualizar_Jug)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Btt_BuscarCod_Jug)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Btt_BuscarNom_Jug)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Btt_Goles_Jug)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Btt_Posicion_Jug)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Btt_CantEquipo_Jug)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Btt_TRojas_Jug)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Btt_MostrarEqui_Jug)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(Pestania_JugadorasLayout.createSequentialGroup()
-                .addComponent(Pestanias_Menu_Jugadoras, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 29, Short.MAX_VALUE))
+                .addGroup(Pestania_JugadorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Pestania_JugadorasLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(Lbl_Jug_Menu)
+                        .addGap(18, 18, 18)
+                        .addComponent(Btt_Cargar_Jug)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Btt_Eliminar_Jug)
+                        .addGap(8, 8, 8)
+                        .addComponent(Btt_Actualizar_Jug)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Btt_BuscarCod_Jug)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Btt_BuscarNom_Jug)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Btt_Goles_Jug)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Btt_Posicion_Jug)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Btt_CantEquipo_Jug)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Btt_TRojas_Jug)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Btt_MostrarEqui_Jug))
+                    .addGroup(Pestania_JugadorasLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Pestanias_Menu_Jugadoras, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         PanelPestanias.addTab("Jugadoras", Pestania_Jugadoras);
@@ -473,5 +488,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel Pestania_Arbitros;
     private javax.swing.JPanel Pestania_Jugadoras;
     private javax.swing.JTabbedPane Pestanias_Menu_Jugadoras;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
