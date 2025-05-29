@@ -10,20 +10,24 @@ public class ControladorArbitros {
 /*Variables de instancia*/
 
     private Arbitro arbitro ;
-    private final ArrayList<Arbitro> listaArbitros;
-    private final ArrayList<Arbitro> listaTempArbitros;
+    private ArrayList<Arbitro> listaArbitros;
+    private ArrayList<Arbitro> listaTempArbitros;
 
     
 /*Constructores*/
     
         //Constructor vacio
     public ControladorArbitros(){
+        /* Me parece que no es necesario
         this.arbitro = new Arbitro();
         this.listaArbitros = new ArrayList<>();
         this.listaTempArbitros = new ArrayList<>();
+        */
     }
         //Constructor lleno
     public ControladorArbitros(Arbitro arbitro, ArrayList<Arbitro> listaArbitros, ArrayList<Arbitro> listaTempArbitros) {
+        
+        this.arbitro = arbitro;
         this.listaArbitros = listaArbitros;
         this.listaTempArbitros = listaTempArbitros;
     }
@@ -74,8 +78,8 @@ public class ControladorArbitros {
 /*Metodos*/
     
         //Añade un arbitro a la lista
-    public void setArbitroLista(Arbitro arbitro){
-        this.listaArbitros.add(arbitro);
+    public void setArbitroLista(){
+        this.listaArbitros.add(this.arbitro);
     }
     
         //Carga todos los arbitros con el mismo en la lista temporal
@@ -130,15 +134,16 @@ public class ControladorArbitros {
         return false;
     }
         //Modifica el arbitro reemplazando al original. Si no encuentra al arbitro retona falso
-    public boolean modificarArbitroLista(Arbitro arbitro, int codigo){
+    public boolean modificarArbitroLista(int codigo){
         for(int i = 0; i < this.listaArbitros.size(); i++){
             if(codigo == this.listaArbitros.get(i).getCodigo()){
                 this.listaArbitros.remove(i);
-                this.listaArbitros.set(i, arbitro);
+                this.listaArbitros.set(i, this.arbitro);
                 return true;
             }
         }
         return false;
     }
+    
     
 }
