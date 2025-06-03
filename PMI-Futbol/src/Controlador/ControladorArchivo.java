@@ -1,10 +1,84 @@
 package Controlador;
 
-import Controlador.ControladorJugadoras;
-import Controlador.ControladorArbitros;
+import Model.Fecha;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import Model.Jugadora;
+import Model.Arbitro;
 import java.io.File;
 import java.io.IOException;
+import Controlador.ControladorJugadoras;
 
 public class ControladorArchivo {
-    File AJugadoras = new File ("\\PMI-Futbol\\PMI-FutbolJugadoras.txt");
+    
+    File aj = new File("\\PMI-Futbol\\PMI-FutbolJugadoras.txt");
+    File aa = new File("\\PMI-Futbol\\PMI-FutbolArbitros.txt");
+
+    public void setAj(File aj) {
+        this.aj = aj;
+    }
+
+    public void setAa(File aa) {
+        this.aa = aa;
+    }
+
+    public File getAj() {
+        return aj;
+    }
+
+    public File getAa() {
+        return aa;
+    }
+    
+
+    public ControladorArchivo() {
+    }
+
+    
+    
+
+public void incioMemoriaJugadoras(){ //Metodo que inicializa la lista de Jugadoras
+    try(BufferedReader br = new BufferedReader(new FileReader(aj))) { //creo un buffer para leer renglones
+      if (aj.createNewFile()) {                                       
+        System.out.println("creado.");// verifico que esté creado el archivo y si no, lo crea
+      } else {
+        System.out.println("existente.");
+      }
+      String reng; //string renglon axiliar 
+      Jugadora jaux = new Jugadora();
+      while((reng=br.readLine())!=null){
+        String[] atr=reng.split(",");
+        if(atr.length==10){
+            jaux.setNombre(atr[0]);//nombre
+            jaux.setApellido(atr[1]);//apellido
+            //jaux.setNacimiento(atr[2]); ¿Como se vamos a guardar nacimiento? creo que deberiamos cambiar el toString para que guarde como dia,mes,año
+            jaux.setNacionalidad(atr[3]);           /*hay que chusmear bien las posiciones*/
+            jaux.setPosicion(atr[4]);
+            jaux.setClub(atr[5]);
+            jaux.setGoles(Integer.parseInt(atr[6]));
+            jaux.setT_Amarillas(Integer.parseInt(atr[7]));//se explica solo
+            jaux.setT_Rojas(Integer.parseInt(atr[8]));
+            jaux.setCodigo(Integer.parseInt(atr[9]));
+            
+            
+            
+        }
+      }
+    } catch (IOException e) {
+      System.out.println("Error de archivo");
+    }
 }
+
+public void inicioDeMemoria(){}
+
+}
+
+
+    
+    
+
+
+    
+    
+
+
