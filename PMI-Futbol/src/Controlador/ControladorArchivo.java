@@ -47,7 +47,7 @@ public void incioMemoriaJugadoras(){ //Metodo que inicializa la lista de Jugador
       String reng; //string renglon axiliar 
       Jugadora jaux = new Jugadora();
       while((reng=br.readLine())!=null){
-        String[] atr=reng.split(",");
+        String[] atr=reng.split(","); // atr: Atrivutos jejejejojojojujuju
         if(atr.length==10){
             jaux.setNombre(atr[0]);//nombre
             jaux.setApellido(atr[1]);//apellido
@@ -58,15 +58,37 @@ public void incioMemoriaJugadoras(){ //Metodo que inicializa la lista de Jugador
             jaux.setGoles(Integer.parseInt(atr[6]));
             jaux.setT_Amarillas(Integer.parseInt(atr[7]));//se explica solo
             jaux.setT_Rojas(Integer.parseInt(atr[8]));
-            jaux.setCodigo(Integer.parseInt(atr[9]));
-            
-            
-            
+            jaux.setCodigo(Integer.parseInt(atr[9]));  
         }
       }
     } catch (IOException e) {
-      System.out.println("Error de archivo");
+      System.out.println("Error en archivo de Jugadora");
     }
+}
+public void inicioMemoriaArbitros(){
+try(BufferedReader br = new BufferedReader(new FileReader(aa))){
+    if(aa.createNewFile()){
+        System.out.println("Creado");
+    }
+    else{
+        System.out.println("Existente");
+    }
+    String reng;
+    Arbitro Aaux=new Arbitro();
+    while((reng=br.readLine())!=null){
+        String[] atr=reng.split(","); // atr: Atrivutos jejejejojojojujuju
+        if(atr.length==7){
+            Aaux.setNombre(atr[0]);//nombre
+            Aaux.setApellido(atr[1]);//apellido
+            //Aaux.setNacimiento(atr[2]); ¿Como se vamos a guardar nacimiento? creo que deberiamos cambiar el toString para que guarde como dia,mes,año
+            Aaux.setNacionalidad(atr[3]);
+            Aaux.setCodigo(Integer.parseInt(atr[4]));  
+            Aaux.setTarjetas(Integer.parseInt(atr[5]));
+            Aaux.setInternacional(Integer.parseInt(atr[6]));
+        }
+    }
+}
+catch(IOException e){}
 }
 
 public void inicioDeMemoria(){}
