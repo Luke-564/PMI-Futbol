@@ -84,7 +84,7 @@ try(BufferedReader br = new BufferedReader(new FileReader(aa))){
             Aaux.setNacionalidad(atr[3]);
             Aaux.setCodigo(Integer.parseInt(atr[4]));  
             Aaux.setTarjetas(Integer.parseInt(atr[5]));
-            Aaux.setInternacional(Integer.parseInt(atr[6]));
+            //Aaux.setInternacional(Integer.parseInt(atr[6]));
         }
     }
 }
