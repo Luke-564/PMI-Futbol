@@ -1,4 +1,5 @@
-    package Model;
+
+package Model;
 
 public class Arbitro extends Persona {
     //variables
@@ -7,13 +8,9 @@ public class Arbitro extends Persona {
     //Constructores
     public Arbitro() {
     }
-    public Arbitro(int tarjetas, boolean internacional) {
-        this.tarjetas = tarjetas;
-        this.internacional = internacional;
-    }
     public Arbitro(int tarjetas, boolean internacional, String nombre, 
-            String apellido, Fecha nacimiento, String nacionalidad, int codigo) {
-        super(nombre, apellido, nacimiento, nacionalidad,codigo);
+            String apellido, Fecha nacimiento, String nacionalidad, String dni) {
+        super(nombre, apellido, nacimiento, nacionalidad,dni);
         this.tarjetas = tarjetas;
         this.internacional = internacional;
     }
@@ -34,6 +31,6 @@ public class Arbitro extends Persona {
     //toString
     @Override
     public String toString() {
-        return ","+ tarjetas + "," + internacional;
+        return "Arbitro{" + "tarjetas=" + tarjetas + ", internacional=" + internacional + '}';
     }    
 }
