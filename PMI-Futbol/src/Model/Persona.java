@@ -11,14 +11,15 @@ public class Persona {
     private int codigo;
     //Constructores
     public Persona() {
+        setCodigo();
     }
     public Persona(String nombre, String apellido, Fecha nacimiento, 
-            String nacionalidad, int codigo) {
+            String nacionalidad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nacimiento = nacimiento;
         this.nacionalidad = nacionalidad;
-        this.codigo = codigo;
+        setCodigo();
     }
     //Getters / Observadores
     public String getNombre() {
@@ -51,7 +52,7 @@ public class Persona {
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
-    public void setCodigo() {
+    public final void setCodigo() {
         Random ale = new Random();
         this.codigo = ale.nextInt(10000);
     }
