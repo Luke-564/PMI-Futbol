@@ -115,9 +115,9 @@ public class ControladorArbitros {
 		return listaTempArbitros;
     }
         //Retorna un arbitro con el codigo coincidente
-    public Arbitro getArbitroPorCodigo(int codigo){
+    public Arbitro getArbitroPorCodigo(String dni){
         for(Arbitro i : this.listaArbitros){
-            if(i.getCodigo() == codigo){
+            if(i.getDni().equals(dni) ){
                 return i;
             }
         }
@@ -149,9 +149,9 @@ public class ControladorArbitros {
     }
     
         //Elimina el arbitro por codigo, Si se encuentra y lo elimina devuelve verdadero, si no se encuentra devuelve falso
-    public boolean eliminarArbitroLista(int codigo){
+    public boolean eliminarArbitroLista(int dni){
         for(int i = 0; i< this.listaArbitros.size(); i++){
-            if(this.listaArbitros.get(i).getCodigo() == codigo){
+            if(this.listaArbitros.get(i).getDni().equals(dni)){
                 this.listaArbitros.remove(i);
                 return true;
             }
@@ -159,9 +159,9 @@ public class ControladorArbitros {
         return false;
     }
         //Modifica el arbitro reemplazando al original. Si no encuentra al arbitro retona falso
-    public boolean modificarArbitroLista(int codigo){
+    public boolean modificarArbitroLista(String dni){
         for(int i = 0; i < this.listaArbitros.size(); i++){
-            if(codigo == this.listaArbitros.get(i).getCodigo()){
+            if( this.listaArbitros.get(i).getDni().equals(dni)){
                 this.listaArbitros.remove(i);
                 this.listaArbitros.set(i, this.arbitro);
                 return true;
