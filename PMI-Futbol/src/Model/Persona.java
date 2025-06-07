@@ -59,8 +59,6 @@ public class Persona {
     //toString, no se si es necesario pero por las dudas
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", apellido=" + apellido + 
-                ", nacimiento=" + nacimiento + ", nacionalidad=" 
-                + nacionalidad + ", codigo=" + codigo + '}';
+        return ","+ nombre + "," + apellido + "," + nacimiento + "," + nacionalidad + "," + codigo;
     }
 }
