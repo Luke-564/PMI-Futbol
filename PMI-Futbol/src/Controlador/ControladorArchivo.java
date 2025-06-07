@@ -1,13 +1,11 @@
 package Controlador;
 
-import Model.Fecha;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import Model.Jugadora;
 import Model.Arbitro;
 import java.io.File;
 import java.io.IOException;
-import Controlador.ControladorJugadoras;
 
 public class ControladorArchivo {
     
@@ -48,17 +46,17 @@ public void incioMemoriaJugadoras(){ //Metodo que inicializa la lista de Jugador
       Jugadora jaux = new Jugadora();
       while((reng=br.readLine())!=null){
         String[] atr=reng.split(","); // atr: Atrivutos jejejejojojojujuju
-        if(atr.length==10){
-            jaux.setNombre(atr[0]);//nombre
-            jaux.setApellido(atr[1]);//apellido
-            //jaux.setNacimiento(atr[2]); ¿Como se vamos a guardar nacimiento? creo que deberiamos cambiar el toString para que guarde como dia,mes,año
-            jaux.setNacionalidad(atr[3]);           /*hay que chusmear bien las posiciones*/
-            jaux.setPosicion(atr[4]);
-            jaux.setClub(atr[5]);
-            jaux.setGoles(Integer.parseInt(atr[6]));
-            jaux.setT_Amarillas(Integer.parseInt(atr[7]));//se explica solo
-            jaux.setT_Rojas(Integer.parseInt(atr[8]));
-            jaux.setCodigo(Integer.parseInt(atr[9]));  
+        if(atr.length==11){
+            jaux.setNombre(atr[0]);
+            jaux.setApellido(atr[1]);
+            jaux.setNacimiento(Integer.parseInt(atr[2]),Integer.parseInt(atr[3]),Integer.parseInt(atr[4]));
+            //jaux.setDni(atr[5]);
+            jaux.setNacionalidad(atr[6]);           /*hasta acá, el set de Persona*/
+            jaux.setPosicion(atr[7]);
+            jaux.setClub(atr[8]);
+            jaux.setGoles(Integer.parseInt(atr[9]));
+            jaux.setT_Amarillas(Integer.parseInt(atr[10]));
+            jaux.setT_Rojas(Integer.parseInt(atr[11]));  
         }
       }
     } catch (IOException e) {
@@ -77,14 +75,19 @@ try(BufferedReader br = new BufferedReader(new FileReader(aa))){
     Arbitro Aaux=new Arbitro();
     while((reng=br.readLine())!=null){
         String[] atr=reng.split(","); // atr: Atrivutos jejejejojojojujuju
-        if(atr.length==7){
+        if(atr.length==8){
             Aaux.setNombre(atr[0]);//nombre
             Aaux.setApellido(atr[1]);//apellido
-            //Aaux.setNacimiento(atr[2]); ¿Como se vamos a guardar nacimiento? creo que deberiamos cambiar el toString para que guarde como dia,mes,año
-            Aaux.setNacionalidad(atr[3]);
-            Aaux.setCodigo(Integer.parseInt(atr[4]));  
-            Aaux.setTarjetas(Integer.parseInt(atr[5]));
-            //Aaux.setInternacional(Integer.parseInt(atr[6]));
+            Aaux.setNacimiento(Integer.parseInt(atr[2]),Integer.parseInt(atr[3]),Integer.parseInt(atr[4])); //¿Como se vamos a guardar nacimiento? creo que deberiamos cambiar el toString para que guarde como dia,mes,año
+            //ACA VA SETDNI                              /*hasta acá lo de persona*/
+            Aaux.setNacionalidad(atr[6]);
+            Aaux.setTarjetas(Integer.parseInt(atr[7]));
+            if(atr[8].equals("true")){
+                Aaux.setInternacional(true);
+            }
+            else if(atr[8].equals("false")){
+                Aaux.setInternacional(false);
+            }
         }
     }
 }
