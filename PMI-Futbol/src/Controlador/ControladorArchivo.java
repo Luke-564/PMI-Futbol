@@ -1,11 +1,14 @@
 package Controlador;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import Model.Jugadora;
 import Model.Arbitro;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ControladorArchivo {
     
@@ -95,10 +98,16 @@ try(BufferedReader br = new BufferedReader(new FileReader(aa))){
 }
 catch(IOException e){}
 }
-
-
-
-public void inicioDeMemoria(){}
+public void guardarEnArchivo(ArrayList<Jugadora> ju){
+try (BufferedWriter bw = new BufferedWriter(new FileWriter(aj))){
+    for (Jugadora p : ju) {
+                bw.write(p.toString());
+                bw.newLine(); // salto de línea
+            }
+}
+catch(IOException e){
+}
+}
 
 }
 

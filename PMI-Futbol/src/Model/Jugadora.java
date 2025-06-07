@@ -62,7 +62,7 @@ public class Jugadora extends Persona implements Comparable <Jugadora> {
     //toString
     @Override
     public String toString() {
-        return ","+super.toString() + posicion + "," + club + 
+        return super.toString() +","+ posicion + "," + club + 
                 "," + goles + "," + t_Amarillas +
                 "," + t_Rojas;
     }
