@@ -1,4 +1,3 @@
-
 package Controlador;
 
 import Model.Jugadora;
@@ -80,8 +79,8 @@ public class ControladorJugadoras {
     public int eliminarJugadora(int codigo) {
         for(int i = 0; i < listaJu.size(); i++) {
             Jugadora ju = listaJu.get(i);
-            int codigoJu = ju.getCodigo();
-            if (codigoJu == codigo){
+            String codigoJu = ju.getDni();
+            if (codigoJu.equals(codigo)){
                 //si la encuentra, tambien eliminarla del equipo
                 String equipo = ju.getClub();
                 eliminarDeEquipo(equipo);
@@ -190,8 +189,8 @@ public class ControladorJugadoras {
     public void setJugadoraT_Rojas(int rojas) {
         this.jugadora.setT_Rojas(rojas);
     }
-    public void setJugadoraCodigoAutomatico() {
-        this.jugadora.setCodigo();
+    public void setJugadoraDni(String dni) {
+        this.jugadora.setDni(dni);
     }
     //Getters de Jugadora
     public String getNombreJugadora() {
@@ -206,8 +205,8 @@ public class ControladorJugadoras {
     public String getNacionalidadJugadora() {
         return this.jugadora.getNacionalidad();
     }
-    public int getCodigoJugadora() {
-        return this.jugadora.getCodigo();
+    public String getCodigoJugadora() {
+        return this.jugadora.getDni();
     }
     public String getPosicionJugadora() {
         return this.jugadora.getPosicion();
