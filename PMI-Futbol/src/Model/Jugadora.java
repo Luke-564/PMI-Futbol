@@ -1,3 +1,4 @@
+ 
 package Model;
 
 public class Jugadora extends Persona implements Comparable <Jugadora> {
@@ -19,8 +20,8 @@ public class Jugadora extends Persona implements Comparable <Jugadora> {
         this.t_Rojas = t_Rojas;
     }
     public Jugadora(String posicion, String club, int goles, int t_Amarillas, int t_Rojas,
-            String nombre, String apellido, Fecha nacimiento, String nacionalidad) {
-        super(nombre, apellido, nacimiento, nacionalidad);
+            String nombre, String apellido, Fecha nacimiento, String nacionalidad, String dni) {
+        super(nombre, apellido, nacimiento, nacionalidad, dni);
         this.posicion = posicion;
         this.club = club;
         this.goles = goles;
@@ -62,9 +63,9 @@ public class Jugadora extends Persona implements Comparable <Jugadora> {
     //toString
     @Override
     public String toString() {
-        return ","+super.toString() + posicion + "," + club + 
-                "," + goles + "," + t_Amarillas +
-                "," + t_Rojas;
+        return super.toString() + "Jugadora{" + "posicion=" + posicion + ", club=" + club + 
+                ", goles=" + goles + ", t_Amarillas=" + t_Amarillas +
+                ", t_Rojas=" + t_Rojas + '}';
     }
     //CompareTo
     @Override
