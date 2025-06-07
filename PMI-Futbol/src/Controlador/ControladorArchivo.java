@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.File;
 import Model.Jugadora;
 import Model.Arbitro;
-import java.io.File;
-import java.io.IOException;
+
+
 import java.util.ArrayList;
 
 public class ControladorArchivo {
@@ -53,7 +55,7 @@ public void incioMemoriaJugadoras(){ //Metodo que inicializa la lista de Jugador
             jaux.setNombre(atr[0]);
             jaux.setApellido(atr[1]);
             jaux.setNacimiento(Integer.parseInt(atr[2]),Integer.parseInt(atr[3]),Integer.parseInt(atr[4]));
-            //jaux.setDni(atr[5]);
+            jaux.setDni(atr[5]);
             jaux.setNacionalidad(atr[6]);           /*hasta acá, el set de Persona*/
             jaux.setPosicion(atr[7]);
             jaux.setClub(atr[8]);
@@ -83,7 +85,7 @@ try(BufferedReader br = new BufferedReader(new FileReader(aa))){
             Aaux.setNombre(atr[0]);//nombre
             Aaux.setApellido(atr[1]);//apellido
             Aaux.setNacimiento(Integer.parseInt(atr[2]),Integer.parseInt(atr[3]),Integer.parseInt(atr[4])); //¿Como se vamos a guardar nacimiento? creo que deberiamos cambiar el toString para que guarde como dia,mes,año
-            //ACA VA SETDNI                              /*hasta acá lo de persona*/
+            Aaux.setDni(atr[5]);                              /*hasta acá lo de persona*/
             Aaux.setNacionalidad(atr[6]);
             Aaux.setTarjetas(Integer.parseInt(atr[7]));
             if(atr[8].equals("true")){
@@ -98,9 +100,20 @@ try(BufferedReader br = new BufferedReader(new FileReader(aa))){
 }
 catch(IOException e){}
 }
-public void guardarEnArchivo(ArrayList<Jugadora> ju){
+public void guardarJuEnArchivo(ArrayList<Jugadora> ju){
 try (BufferedWriter bw = new BufferedWriter(new FileWriter(aj))){
     for (Jugadora p : ju) {
+                bw.write(p.toString());
+                bw.newLine(); // salto de línea
+            }
+}
+catch(IOException e){
+}
+}
+
+public void guardarArrEnArchivo(ArrayList<Arbitro> arr){
+try (BufferedWriter bw = new BufferedWriter(new FileWriter(aj))){
+    for (Arbitro p : arr) {
                 bw.write(p.toString());
                 bw.newLine(); // salto de línea
             }
