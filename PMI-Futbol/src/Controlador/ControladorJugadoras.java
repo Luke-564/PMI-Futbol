@@ -6,6 +6,7 @@ import java.util.HashMap;
 import Model.Fecha;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class ControladorJugadoras {
     
@@ -22,12 +23,6 @@ public class ControladorJugadoras {
         this.equipos = new HashMap<>();
         this.listaJu = new ArrayList<>();
     }
-    //solo guarda una jugadora, no se si este lo lleguemos a usar
-    public ControladorJugadoras(Jugadora juga) {
-        this.equipos = new HashMap<>();
-        this.listaJu = new ArrayList<>();
-        this.jugadora = juga;
-    }
     /*Construye la lista y los equipos, muy importante para pasar la informacion
     del main al constructor*/
     public ControladorJugadoras(HashMap mapa, ArrayList lista) {
@@ -36,11 +31,8 @@ public class ControladorJugadoras {
     }
     
     //Getters
-    
-    public Jugadora getJuga() {
-        return jugadora;
-    }
-    public ArrayList getListaJu() {
+
+    public ArrayList getListaJugadoras() {
         return listaJu;
     }
     public HashMap<String, Integer> getEquipos() {
@@ -48,83 +40,36 @@ public class ControladorJugadoras {
     }
     
     //Setters
-
-    public void setJugadora(Jugadora jugadora) {
-        this.jugadora = jugadora;
-    }
-    public void setListaJu(ArrayList lista) {
-        this.listaJu = lista;
-    }
+    public void agregarJugadoraALaLista() {
+        this.listaJu.add(this.jugadora);
+        agregarAEquipos(this.jugadora);
+    }//poner un try catch para saber si el equipo ya tiene 7 jugadoras
+    
     public void setEquipos(HashMap<String, Integer> equipos) {
         this.equipos = equipos;
-    }    
-    public void setJugadoraNombre(String nombre) {
-        this.jugadora.setNombre(nombre);
     }
-    public void setJugadoraApellido(String apellido) {
-        this.jugadora.setApellido(apellido);
+    public Jugadora getJugadora() {
+        return this.jugadora;
     }
-    public void setJugadoraNacimiento(Fecha nacimiento) {
-        this.jugadora.setNacimiento(nacimiento);
-    }
-    public void setJugadoraNacionalidad(String nacionalidad) {
-        this.jugadora.setNacionalidad(nacionalidad);
-    }
-    public void setJugadoraPosicion(String posicion) {
-        this.jugadora.setPosicion(posicion);
-    }
-    public void setJugadoraClub(String club) {
-        this.jugadora.setClub(club);
-    }
-    public void setJugadoraGoles(int goles) {
-        this.jugadora.setGoles(goles);
-    }
-    public void setJugadoraT_Amarillas(int amarillas) {
-        this.jugadora.setT_Amarillas(amarillas);
-    }
-    public void setJugadoraT_Rojas(int rojas) {
-        this.jugadora.setT_Rojas(rojas);
-    }
-    public void setJugadoraCodigoAutomatico() {
-        this.jugadora.setCodigo(0);//hacer algo para que sea automatico
+    public void setJugadora(Jugadora ju) {
+        this.jugadora = ju;
     }
     
     //Metodos 
     
     //Hace una lista temporal de las jugadoras con el mismo nombre
-    public ArrayList getJugadorasDeLaLista(String nombre) {
-        ArrayList <Jugadora> listaTemp = new ArrayList<>();
-        for(int i = 0; i < listaJu.size(); i++) {
-            Jugadora ju = listaJu.get(i);
-            String nombreJu = ju.getNombre();
-            if (nombre.equalsIgnoreCase(nombreJu)){
+    public List<Jugadora> busqueda_Nombre(String nombre) {
+        List <Jugadora> listaTemp = new ArrayList<>();
+        for(Jugadora ju : listaJu) {
+            if (ju.getNombre().equals(nombre)){
                 listaTemp.add(ju);
             }
         }
-        //Poner un try catch en caso de no encontrar a la jugadora
         return listaTemp;
     } 
-    //devuelve una jugadora de la lista de jugadoras, la busca por el codigo
-    public Jugadora getJugadoraDeLaListaCodigo(int codigo) {
-        for(int i = 0; i < listaJu.size(); i++) {
-            Jugadora ju = listaJu.get(i);
-            int cod = ju.getCodigo();
-            if (cod == codigo){
-                return listaJu.get(i);
-            }
-        }
-        Jugadora jus = null; //Poner un try catch en caso de no encontrar a la jugadora
-        return jus;
-    } 
-    
-    //Agrega una jugadora a la lista 
-    public void setListaJu(Jugadora ju) {
-        this.listaJu.add(ju);
-        setEquipos(ju);
-    }//poner un try catch para saber si el equipo ya tiene 7 jugadoras
     
     //Aumenta el numero de jugadoras de un equipo
-    public void setEquipos(Jugadora ju) {
+    public void agregarAEquipos(Jugadora ju) {
         String equipo = ju.getClub();
         if(this.equipos.containsKey(equipo)){
             this.equipos.put(equipo, this.equipos.get(equipo) + 1);
@@ -201,5 +146,82 @@ public class ControladorJugadoras {
             }
         }
         return cuantas;
+    }
+    //Hace una lista con las jugadoras segun un equipo pasado por parametro
+    public List<Jugadora> mostrarEquipo(String club) {
+        List<Jugadora> lis = new ArrayList<>();
+        for(Jugadora ju : this.listaJu){
+            if(ju.getClub().equals(club)){
+                lis.add(ju);
+            }
+        }
+        return lis;
+    }
+    //Devuelve una jugadora de una lista pasada por parametro y su posicion
+    public void guardarJugadora(List<Jugadora> lista, int i){
+        this.jugadora = lista.get(i);
+    }
+    
+    //Setters de jugadora
+    public void setJugadoraNombre(String nombre) {
+        this.jugadora.setNombre(nombre);
+    }
+    public void setJugadoraApellido(String apellido) {
+        this.jugadora.setApellido(apellido);
+    }
+    public void setJugadoraNacimiento(int dia, int mes, int anio) {
+        this.jugadora.setNacimiento(dia, mes, anio);
+    }
+    public void setJugadoraNacionalidad(String nacionalidad) {
+        this.jugadora.setNacionalidad(nacionalidad);
+    }
+    public void setJugadoraPosicion(String posicion) {
+        this.jugadora.setPosicion(posicion);
+    }
+    public void setJugadoraClub(String club) {
+        this.jugadora.setClub(club);
+    }
+    public void setJugadoraGoles(int goles) {
+        this.jugadora.setGoles(goles);
+    }
+    public void setJugadoraT_Amarillas(int amarillas) {
+        this.jugadora.setT_Amarillas(amarillas);
+    }
+    public void setJugadoraT_Rojas(int rojas) {
+        this.jugadora.setT_Rojas(rojas);
+    }
+    public void setJugadoraCodigoAutomatico() {
+        this.jugadora.setCodigo();
+    }
+    //Getters de Jugadora
+    public String getNombreJugadora() {
+        return this.jugadora.getNombre();
+    }
+    public String getApellidoJugadora() {
+        return this.jugadora.getApellido();
+    }
+    public Fecha getNacimientoJugadora() {
+        return this.jugadora.getNacimiento();
+    }
+    public String getNacionalidadJugadora() {
+        return this.jugadora.getNacionalidad();
+    }
+    public int getCodigoJugadora() {
+        return this.jugadora.getCodigo();
+    }
+    public String getPosicionJugadora() {
+        return this.jugadora.getPosicion();
+    }
+    public String getClubJugadora() {
+        return this.jugadora.getClub();
+    }
+    public int getGolesJugadora() {
+        return this.jugadora.getGoles();
+    }
+    public int getAmarillasJugadora() {
+        return this.jugadora.getT_Amarillas();
+    }
+    public int getRojasJugadora() {
+        return this.jugadora.getT_Rojas();
     }
 }

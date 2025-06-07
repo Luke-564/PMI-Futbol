@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Random;
+
 public class Persona {
     //variables de instancia
     private String nombre;
@@ -41,14 +43,17 @@ public class Persona {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    public void setNacimiento(Fecha nacimiento) {
-        this.nacimiento = nacimiento;
+    public void setNacimiento(int dia, int mes, int anio) {
+        this.nacimiento.setDia(dia);
+        this.nacimiento.setMes(mes);
+        this.nacimiento.setAnio(anio);
     }
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setCodigo() {
+        Random ale = new Random();
+        this.codigo = ale.nextInt(10000);
     }
     
     //toString, no se si es necesario pero por las dudas
