@@ -1,4 +1,4 @@
-package Model;
+    package Model;
 
 public class Arbitro extends Persona {
     //variables

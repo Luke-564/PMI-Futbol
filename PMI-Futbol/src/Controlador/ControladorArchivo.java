@@ -59,6 +59,7 @@ public void incioMemoriaJugadoras(){ //Metodo que inicializa la lista de Jugador
             jaux.setT_Rojas(Integer.parseInt(atr[11]));  
         }
       }
+      br.close(); //Cuando el bloque de Try termina, el archivo se cierra solo, pero creo que no está de más
     } catch (IOException e) {
       System.out.println("Error en archivo de Jugadora");
     }
@@ -90,9 +91,12 @@ try(BufferedReader br = new BufferedReader(new FileReader(aa))){
             }
         }
     }
+    br.close(); //Cuando el bloque de Try termina, el archivo se cierra solo, pero creo que no está de más
 }
 catch(IOException e){}
 }
+
+
 
 public void inicioDeMemoria(){}
 
