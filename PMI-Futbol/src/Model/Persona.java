@@ -11,7 +11,6 @@ public class Persona {
     private int codigo;
     //Constructores
     public Persona() {
-        setCodigo();
     }
     public Persona(String nombre, String apellido, Fecha nacimiento, 
             String nacionalidad) {
