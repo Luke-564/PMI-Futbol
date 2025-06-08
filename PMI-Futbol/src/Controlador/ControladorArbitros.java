@@ -1,4 +1,3 @@
-
 package Controlador;
 
 import Model.Arbitro;
@@ -41,9 +40,7 @@ public class ControladorArbitros {
     }
 
 	// Variables generales de Persona
-    public Arbitro getArbitro() {
-        return this.arbitro;
-    }
+
     public String getArbitroNombre() {
         return this.arbitro.getNombre();
     }
@@ -64,7 +61,7 @@ public class ControladorArbitros {
         return this.arbitro.getTarjetas();
     }
     public boolean isArbitroInternacional() {
-        return this.arbitro.getInternacional();
+        return this.arbitro.isInternacional();
     }
     
 /*Setters*/
@@ -105,7 +102,7 @@ public class ControladorArbitros {
     }
     
         //Carga todos los arbitros con el mismo en la lista temporal
-    public ArrayList<> getArbitroPorNombre(String nombre, String apellido){
+    public ArrayList getArbitroPorNombre(String nombre, String apellido){
         ArrayList<Arbitro> listaTempArbitros = new ArrayList<>();
         for(Arbitro i : this.listaArbitros){
                 if(i.getNombre().equals(nombre) && i.getApellido().equals(apellido)){
@@ -126,18 +123,18 @@ public class ControladorArbitros {
     }
     
         //Almacena en la lista temporal los arbitros internacionales
-    public void getArbitrosInternacionales(){
-		ArrayList<Arbitro> listaTempArbitros = new ArrayList<>();
+    public ArrayList getArbitrosInternacionales(){
+		ArrayList<Arbitro> listaTemp = new ArrayList<>();
         for(Arbitro i : this.listaArbitros){
             if(i.isInternacional()){
-                listaTempArbitros.add(i);
+                listaTemp.add(i);
             }
         }
-		return listaTempArbitros;
+		return listaTemp;
     }
     
         //Almacena en la lista temporal los arbitros Nacionales
-    public void getArbitrosNacionales(){
+    public ArrayList getArbitrosNacionales(){
         ArrayList<Arbitro> listaTempArbitros = new ArrayList<>();
         for(Arbitro i : this.listaArbitros){
             //If negado, osea que no sea internacional
@@ -173,11 +170,9 @@ public class ControladorArbitros {
 	public int getSizeLista(){
 				return this.listaArbitros.size();
 		}
-	}
+	
 		//Devuelve el arbitro que está en esa posicion de la lista. Es necesario especificarsi si es la lista temporal o no
 	public Arbitro getArbitroLista(int posicion){
 				return this.listaArbitros.get(posicion);
-		}
-
-	}        
+		}	        
 }
