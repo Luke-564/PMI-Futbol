@@ -17,10 +17,9 @@ public class PMIFutbol {
         Arbitro arbitro = new Arbitro();
         ArrayList<Jugadora> listaJ = new ArrayList<>(); 
         ArrayList <Arbitro> listaAr = new ArrayList <>();
-        ArrayList <Arbitro> listaTempAr = new ArrayList <>();
         HashMap<String, Integer> equipos = new HashMap<>();
         //Asignacion de variables a los controladores
-        ControladorArbitros contListAr = new ControladorArbitros(arbitro, listaAr, listaTempAr); 
+        ControladorArbitros contListAr = new ControladorArbitros(arbitro, listaAr); 
         ControladorJugadoras contListJu = new ControladorJugadoras(equipos, listaJ);
         
         
