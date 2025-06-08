@@ -112,14 +112,13 @@ public class ControladorArbitros {
 		return listaTempArbitros;
     }
         //Retorna un arbitro con el codigo coincidente
-    public Arbitro getArbitroPorCodigo(String dni){
+    public Arbitro getArbitroPorDni(String dni){
         for(Arbitro i : this.listaArbitros){
             if(i.getDni().equals(dni) ){
                 return i;
             }
         }
-        Arbitro arbitroNulo = null;
-        return arbitroNulo;
+        throw new NoSuchElementException("No se encontro el arbitro");
     }
     
         //Almacena en la lista temporal los arbitros internacionales
@@ -146,25 +145,24 @@ public class ControladorArbitros {
     }
     
         //Elimina el arbitro por codigo, Si se encuentra y lo elimina devuelve verdadero, si no se encuentra devuelve falso
-    public boolean eliminarArbitroLista(int dni){
+    public void eliminarArbitroLista(int dni){
         for(int i = 0; i< this.listaArbitros.size(); i++){
             if(this.listaArbitros.get(i).getDni().equals(dni)){
                 this.listaArbitros.remove(i);
-                return true;
             }
         }
-        return false;
+        throw new RuntimeException("No se pudo eliminar al arbitro");
     }
         //Modifica el arbitro reemplazando al original. Si no encuentra al arbitro retona falso
-    public boolean modificarArbitroLista(String dni){
+    public void modificarArbitroLista(String dni){
         for(int i = 0; i < this.listaArbitros.size(); i++){
             if( this.listaArbitros.get(i).getDni().equals(dni)){
                 this.listaArbitros.remove(i);
                 this.listaArbitros.set(i, this.arbitro);
-                return true;
+                
             }
         }
-        return false;
+        throw new RuntimeException("No se pudo modificar el arbitro");
     }
 		//Devuelve el tamaño de la lista. Es necesario especificar si es la lista temporal o no
 	public int getSizeLista(){
