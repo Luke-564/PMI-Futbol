@@ -84,7 +84,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtDni = new javax.swing.JTextField();
-        txtNacionalidad = new javax.swing.JTextField();
         lblTarjetas = new javax.swing.JLabel();
         txtDia = new javax.swing.JTextField();
         txtMes = new javax.swing.JTextField();
@@ -94,6 +93,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         bttEliminar = new javax.swing.JButton();
         CkBttInternacional = new javax.swing.JCheckBox();
         txtTarjetas = new javax.swing.JTextField();
+        CBNacionalidad = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaArbitros = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
@@ -153,10 +153,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         txtDni.setBackground(new java.awt.Color(61, 74, 90));
         txtDni.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtDni.setForeground(new java.awt.Color(255, 255, 255));
-
-        txtNacionalidad.setBackground(new java.awt.Color(61, 74, 90));
-        txtNacionalidad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtNacionalidad.setForeground(new java.awt.Color(255, 255, 255));
 
         lblTarjetas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTarjetas.setText("Tarjetas sacadas");
@@ -223,6 +219,18 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             }
         });
 
+        CBNacionalidad.setBackground(new java.awt.Color(61, 74, 90));
+        CBNacionalidad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        CBNacionalidad.setForeground(new java.awt.Color(255, 255, 255));
+        CBNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ARGENTINA", "BOLIVIANA", "PERUANA", "URUGUAYA", "BRASILERA", "ARGENTINA", "BOLIVIANA", "PERUANA", "URUGUAYA", "BRASILERA" }));
+        CBNacionalidad.setToolTipText("");
+        CBNacionalidad.setBorder(null);
+        CBNacionalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBNacionalidadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout fondoDatosLayout = new javax.swing.GroupLayout(fondoDatos);
         fondoDatos.setLayout(fondoDatosLayout);
         fondoDatosLayout.setHorizontalGroup(
@@ -242,7 +250,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
                             .addComponent(txtDni, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                             .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                             .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                            .addComponent(txtNacionalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
+                            .addComponent(CBNacionalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CkBttInternacional)
@@ -289,7 +297,9 @@ public class Menu_Arbitros extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNacionalidad)
-                            .addComponent(txtNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(fondoDatosLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(CBNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -482,15 +492,15 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         
         //Va guardando los datos obtenidos en el controlador, en caso de tener
         //un campo vacio, manda error con la variable error
-        controlador.setArbitroNombre(txtNombre.getText().toUpperCase());
+        controlador.setArbitroNombre(txtNombre.getText());
         if(controlador.getArbitroNombre().isEmpty()){
             throw new RuntimeException();
         }
-        controlador.setArbitroApellido(txtApellido.getText().toUpperCase());
+        controlador.setArbitroApellido(txtApellido.getText());
         if(controlador.getArbitroApellido().isEmpty()){
             throw new RuntimeException();
         }
-        controlador.setArbitroNacionalidad(txtNacionalidad.getText().toUpperCase());
+        controlador.setArbitroNacionalidad(CBNacionalidad.getSelectedItem().toString());
         if(controlador.getArbitroNacionalidad().isEmpty()){
             throw new RuntimeException();
         }
@@ -528,7 +538,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         //Refresca los txt, los deja sin contenido escrito por el usuario
         txtNombre.setText("");
         txtApellido.setText("");
-        txtNacionalidad.setText("");
+        CBNacionalidad.setSelectedItem("");
         txtDia.setText("");
         txtMes.setText("");
         txtAnio.setText("");
@@ -551,15 +561,15 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         ControladorArbitros controlador = new ControladorArbitros();
             //Va guardando los datos obtenidos en el controlador, en caso de tener
             //un campo vacio, manda error con la variable error
-        controlador.setArbitroNombre(txtNombre.getText().toUpperCase());
+        controlador.setArbitroNombre(txtNombre.getText());
         if(controlador.getArbitroNombre().isEmpty()){
             error = true;
         }
-        controlador.setArbitroApellido(txtApellido.getText().toUpperCase());
+        controlador.setArbitroApellido(txtApellido.getText());
         if(controlador.getArbitroApellido().isEmpty()){
             error = true;
         }
-        controlador.setArbitroNacionalidad(txtNacionalidad.getText().toUpperCase());
+        controlador.setArbitroNacionalidad(CBNacionalidad.getSelectedItem().toString());
         if(controlador.getArbitroNacionalidad().isEmpty()){
             error = true;
         }
@@ -600,7 +610,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         //Refresca los txt, los deja sin contenido escrito por el usuario
         txtNombre.setText("");
         txtApellido.setText("");
-        txtNacionalidad.setText("");
+        CBNacionalidad.setSelectedItem("");
         txtDia.setText("");
         txtMes.setText("");
         txtAnio.setText("");
@@ -638,7 +648,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
                 //Refresca los txt, los deja sin contenido escrito por el usuario
         txtNombre.setText("");
         txtApellido.setText("");
-        txtNacionalidad.setText("");
+        CBNacionalidad.setSelectedItem("");
         txtDia.setText("");
         txtMes.setText("");
         txtAnio.setText("");
@@ -794,7 +804,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             txtNombre.setText(controlador.getArbitroNombre());
             txtApellido.setText(controlador.getArbitroApellido());
             txtDni.setText(controlador.getArbitroDni());
-            txtNacionalidad.setText(controlador.getArbitroNacionalidad());
+            CBNacionalidad.setSelectedItem(controlador.getArbitroNacionalidad());
             txtDia.setText(Integer.toString(controlador.getArbitroNacimientoDia()));
             txtMes.setText(Integer.toString(controlador.getArbitroNacimientoMes()));
             txtAnio.setText(Integer.toString(controlador.getArbitroNacimientoAnio()));
@@ -810,11 +820,16 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
+    private void CBNacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBNacionalidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBNacionalidadActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CBNacionalidad;
     private javax.swing.JCheckBox ChkBxFiltroInternacional;
     private javax.swing.JCheckBox CkBttInternacional;
     private javax.swing.JButton bttActualizarFiltro;
@@ -847,7 +862,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
     private javax.swing.JTextField txtDia;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtMes;
-    private javax.swing.JTextField txtNacionalidad;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTarjetas;
     // End of variables declaration//GEN-END:variables
