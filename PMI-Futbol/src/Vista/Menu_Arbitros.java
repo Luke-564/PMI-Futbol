@@ -173,6 +173,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         bttModificar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         bttModificar.setForeground(new java.awt.Color(255, 255, 255));
         bttModificar.setText("Modificar");
+        bttModificar.setEnabled(false);
         bttModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttModificarActionPerformed(evt);
@@ -659,7 +660,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
 
     private void bttBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttBuscarActionPerformed
         // TODO add your handling code here:
-        String nombre = txtBuscar.getText().toUpperCase();
+        String nombreDni = txtBuscar.getText().toUpperCase();
         
         ControladorArbitros controlador = new ControladorArbitros();
         //Crea el objeto que tendra las filas de la tabla
@@ -668,8 +669,8 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         while (modelArbitros.getRowCount() > 0) {
         modelArbitros.removeRow(0);
             }
-        for (int i = 0; i < controlador.getArbitroSoloPorNombre(nombre).size(); i++) {
-            controlador.setArbitroDeListaExterna(controlador.getArbitroSoloPorNombre(nombre), i);
+        try{
+            controlador.setArbitro(controlador.getArbitroPorDni(nombreDni));
             //Va guardando los datos correspondientes en las filas del objeto
             fila[0] = Boolean.toString(controlador.isArbitroInternacional());
             fila[1] = Integer.toString(controlador.getArbitroTarjetas());
@@ -681,6 +682,36 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             //Guarda las filas en la tabla
             modelArbitros.addRow(fila);
         }
+        catch(Exception e){
+           for (int i = 0; i < controlador.getArbitroSoloPorNombre(nombreDni).size(); i++) {
+                controlador.setArbitroDeListaExterna(controlador.getArbitroSoloPorNombre(nombreDni), i);
+                //Va guardando los datos correspondientes en las filas del objeto
+                fila[0] = Boolean.toString(controlador.isArbitroInternacional());
+                fila[1] = Integer.toString(controlador.getArbitroTarjetas());
+                fila[2] = controlador.getArbitroNombre();
+                fila[3] = controlador.getArbitroApellido();
+                fila[4] = controlador.getArbitroDni();
+                fila[5] = (Integer.toString(controlador.getArbitroNacimientoDia())+"/"+Integer.toString(controlador.getArbitroNacimientoMes())+"/"+
+                            Integer.toString(controlador.getArbitroNacimientoAnio()));
+                //Guarda las filas en la tabla
+                modelArbitros.addRow(fila);
+            }
+           for (int i = 0; i < controlador.getArbitroSoloPorApellido(nombreDni).size(); i++) {
+                controlador.setArbitroDeListaExterna(controlador.getArbitroSoloPorApellido(nombreDni), i);
+                //Va guardando los datos correspondientes en las filas del objeto
+                fila[0] = Boolean.toString(controlador.isArbitroInternacional());
+                fila[1] = Integer.toString(controlador.getArbitroTarjetas());
+                fila[2] = controlador.getArbitroNombre();
+                fila[3] = controlador.getArbitroApellido();
+                fila[4] = controlador.getArbitroDni();
+                fila[5] = (Integer.toString(controlador.getArbitroNacimientoDia())+"/"+Integer.toString(controlador.getArbitroNacimientoMes())+"/"+
+                            Integer.toString(controlador.getArbitroNacimientoAnio()));
+                //Guarda las filas en la tabla
+                modelArbitros.addRow(fila);
+            }
+        
+        }
+        
     }//GEN-LAST:event_bttBuscarActionPerformed
     
 //Metodo para refrescar la tabla de arbitros
@@ -714,6 +745,21 @@ public class Menu_Arbitros extends javax.swing.JFrame {
                         Integer.toString(controlador.getArbitroNacimientoAnio()));
             //Guarda las filas en la tabla
             modelArbitros.addRow(fila);
+            //Refresca los txt, los deja sin contenido escrito por el usuario
+            txtNombre.setText("");
+            txtApellido.setText("");
+            CBNacionalidad.setSelectedItem("");
+            txtDia.setText("");
+            txtMes.setText("");
+            txtAnio.setText("");
+            txtDni.setText("");
+            txtDni.setEnabled(true);
+            txtTarjetas.setText("");
+            CkBttInternacional.setSelected(false);
+            bttCargar.setEnabled(true);
+            bttModificar.setEnabled(false);
+            
+        
         } 
     }
     public void refrescarTablaFunciones(){
@@ -725,6 +771,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         while (modelFunciones.getRowCount() > 0) {
             modelFunciones.removeRow(0);
         }
+
         if((boolean)ChkBxFiltroInternacional.isSelected() == true){
             //Recorre la lista del controlador
             for (int i = 0; i < controlador.getArbitrosInternacionales().size(); i++) {
@@ -810,6 +857,11 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             txtAnio.setText(Integer.toString(controlador.getArbitroNacimientoAnio()));
             txtTarjetas.setText(Integer.toString(controlador.getArbitroTarjetas()));
             CkBttInternacional.setSelected(controlador.isArbitroInternacional());
+            txtDni.setEnabled(false);
+            bttCargar.setEnabled(false);
+            bttModificar.setEnabled(true);
+
+
         }
         
         
