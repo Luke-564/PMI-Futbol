@@ -124,6 +124,15 @@ public class ControladorArbitros {
         }
 		return listaTempArbitros;
     }
+    public ArrayList<Arbitro> getArbitroSoloPorApellido(String apellido){
+        ArrayList<Arbitro> listaTempArbitros = new ArrayList<>();
+        for(Arbitro i : this.listaArbitros){
+                if(i.getApellido().equals(apellido)){
+                    listaTempArbitros.add(i);
+            }
+        }
+		return listaTempArbitros;
+    }
         //Retorna un arbitro con el codigo coincidente
     public Arbitro getArbitroPorDni(String dni){
         for(Arbitro i : this.listaArbitros){
