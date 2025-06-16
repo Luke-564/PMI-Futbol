@@ -789,7 +789,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         int col = tablaArbitros.getSelectedColumn();
         ControladorArbitros controlador = new ControladorArbitros();
         if(row != -1 && col != -1){
-            String dni = (String)tablaArbitros.getValueAt(row, col);
+            String dni = (String)tablaArbitros.getValueAt(row,4);
             controlador.setArbitro(controlador.getArbitroPorDni(dni));
             txtNombre.setText(controlador.getArbitroNombre());
             txtApellido.setText(controlador.getArbitroApellido());
