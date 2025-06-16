@@ -32,35 +32,35 @@ public class Menu extends javax.swing.JFrame {
         this.setSize(1100, 600);
         
         //Crea un string con las columnas de la tabla de jugadoras
-        String tabla [] = {"Dni", "Nombre", "Apellido","Club", "Posicion"};
+        String tabla [] = {"DNI", "NOMBRE", "APELLIDO","CLUB", "POSICION","GOLES"};
         //Guarda el string en el modelo de jugadoras
         modelJugadoras.setColumnIdentifiers(tabla);
         //A la tabla de jugadoras le guarda su modelo correspondiente
         tablaJugadoras.setModel(modelJugadoras);
         
         //Crea un string con las columnas de la tabla de equipos
-        String tablaClub [] = {"Equipo", "Jugadoras" };
+        String tablaClub [] = {"EQUIPO", "JUGADORAS" };
         //Guarda el string en el modelo de equipos
         modelEquipos.setColumnIdentifiers(tablaClub);
         //A la tabla de equipos le guarda su modelo correspondiente
         tablaEquipos.setModel(modelEquipos);
         
         //Crea un string con las columnas de la tabla de goles
-        String tablagol [] = {"Club", "Nombre","Apellido" };
+        String tablagol [] = {"EQUIPO", "NOMBRE","APELLIDO" };
         //Guarda el string en el modelo de goles
         modelGoles.setColumnIdentifiers(tablagol);
         //A la tabla de goles le guarda su modelo correspondiente
         tablaGoles.setModel(modelGoles);
         
         //Crea un string con las columnas de la tabla de rojas
-        String tablaroja [] = {"Club", "Nombre","Apellido", "Expulsiones" };
+        String tablaroja [] = {"EQUIPO", "NOMBRE","APELLIDO", "EXPULSIONES" };
         //Guarda el string en el modelo de rojas
         modelRojas.setColumnIdentifiers(tablaroja);
         //A la tabla de rojas le guarda su modelo correspondiente
         tablaRojas.setModel(modelRojas);
         
         //Crea un string con las columnas de la tabla de posicion
-        String tablaposicion [] = {"Posicion", "Jugadoras" };
+        String tablaposicion [] = {"POSICION", "JUGADORAS" };
         //Guarda el string en el modelo de rojas
         modelPosicion.setColumnIdentifiers(tablaposicion);
         //A la tabla de rojas le guarda su modelo correspondiente
@@ -162,17 +162,17 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        fondoPrincipal.setBackground(new java.awt.Color(255, 204, 204));
+        fondoPrincipal.setBackground(new java.awt.Color(242, 235, 242));
         fondoPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pestañas.setBackground(new java.awt.Color(153, 0, 153));
+        pestañas.setBackground(new java.awt.Color(198, 197, 217));
         pestañas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        fondoJugadoras.setBackground(new java.awt.Color(204, 153, 255));
+        fondoJugadoras.setBackground(new java.awt.Color(128, 111, 166));
         fondoJugadoras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102), 3));
         fondoJugadoras.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fondoDatos.setBackground(new java.awt.Color(204, 204, 255));
+        fondoDatos.setBackground(new java.awt.Color(190, 143, 191));
 
         lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNombre.setText("Nombre");
@@ -210,10 +210,10 @@ public class Menu extends javax.swing.JFrame {
         lblTarjetas.setText("Tarjetas");
 
         cboPosicion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cboPosicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Delantera", "Portera", "Defensora", "Medio Campista" }));
+        cboPosicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DELANTERA", "ARQUERA", "DEFENSORA", "MEDIOCAMPISTA" }));
 
         cboClub.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cboClub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boca", "River", "Racing", "Independiente", "Tigre", "Juventud", "Estudiantes", "Platense ", "Banfield ", "Lanus" }));
+        cboClub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOCA", "RIVER", "RACING", "INDEPENDIENTE", "TIGRE", "JUVENTUD", "ESTUDIANTES", "PLATENSE", "BANFIELD", "LANUS" }));
 
         txtDia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
@@ -225,30 +225,30 @@ public class Menu extends javax.swing.JFrame {
 
         lblRojas.setText("Rojas");
 
-        bttModificar.setBackground(new java.awt.Color(255, 204, 255));
+        bttModificar.setBackground(new java.awt.Color(242, 235, 242));
         bttModificar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         bttModificar.setText("Modificar");
-        bttModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        bttModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(198, 197, 217), 2));
         bttModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttModificarActionPerformed(evt);
             }
         });
 
-        bttCargar.setBackground(new java.awt.Color(255, 204, 255));
+        bttCargar.setBackground(new java.awt.Color(242, 235, 242));
         bttCargar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         bttCargar.setText("Cargar");
-        bttCargar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        bttCargar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(198, 197, 217), 2));
         bttCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttCargarActionPerformed(evt);
             }
         });
 
-        bttEliminar.setBackground(new java.awt.Color(204, 102, 255));
+        bttEliminar.setBackground(new java.awt.Color(48, 97, 140));
         bttEliminar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         bttEliminar.setText("ELIMINAR");
-        bttEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153), 2));
+        bttEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(82, 51, 112), 2));
         bttEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttEliminarActionPerformed(evt);
@@ -321,7 +321,7 @@ public class Menu extends javax.swing.JFrame {
                             .addGroup(fondoDatosLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtRojas, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(bttModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -405,10 +405,10 @@ public class Menu extends javax.swing.JFrame {
         txtBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         fondoJugadoras.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 192, -1));
 
-        bttBuscar.setBackground(new java.awt.Color(255, 204, 255));
+        bttBuscar.setBackground(new java.awt.Color(242, 235, 242));
         bttBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         bttBuscar.setText("Buscar");
-        bttBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        bttBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(198, 197, 217), 2));
         bttBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttBuscarActionPerformed(evt);
@@ -416,10 +416,10 @@ public class Menu extends javax.swing.JFrame {
         });
         fondoJugadoras.add(bttBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 192, -1));
 
-        bttVolver.setBackground(new java.awt.Color(102, 102, 255));
+        bttVolver.setBackground(new java.awt.Color(48, 97, 140));
         bttVolver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bttVolver.setText("Volver");
-        bttVolver.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 153), 3));
+        bttVolver.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(82, 51, 112), 3));
         bttVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttVolverActionPerformed(evt);
@@ -427,10 +427,10 @@ public class Menu extends javax.swing.JFrame {
         });
         fondoJugadoras.add(bttVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 192, -1));
 
-        bttActualizarTabla1.setBackground(new java.awt.Color(255, 204, 255));
+        bttActualizarTabla1.setBackground(new java.awt.Color(242, 235, 242));
         bttActualizarTabla1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         bttActualizarTabla1.setText("Actualizar Tabla");
-        bttActualizarTabla1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        bttActualizarTabla1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(198, 197, 217), 2));
         bttActualizarTabla1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttActualizarTabla1ActionPerformed(evt);
@@ -440,12 +440,13 @@ public class Menu extends javax.swing.JFrame {
 
         pestañas.addTab("Menu", fondoJugadoras);
 
-        fondoFunciones.setBackground(new java.awt.Color(204, 153, 255));
+        fondoFunciones.setBackground(new java.awt.Color(128, 111, 166));
         fondoFunciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102), 3));
         fondoFunciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fondoOpciones.setBackground(new java.awt.Color(204, 204, 255));
+        fondoOpciones.setBackground(new java.awt.Color(190, 143, 191));
 
+        bttCantJu.setBackground(new java.awt.Color(190, 143, 191));
         bttGrupoFunciones.add(bttCantJu);
         bttCantJu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bttCantJu.setText("Cantidad de jugadoras");
@@ -455,6 +456,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        bttCantGoles.setBackground(new java.awt.Color(190, 143, 191));
         bttGrupoFunciones.add(bttCantGoles);
         bttCantGoles.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bttCantGoles.setText("Cantidad de goles");
@@ -467,6 +469,7 @@ public class Menu extends javax.swing.JFrame {
         lblTituloBuscar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTituloBuscar.setText("Buscar por:");
 
+        bttMasExpu.setBackground(new java.awt.Color(190, 143, 191));
         bttGrupoFunciones.add(bttMasExpu);
         bttMasExpu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bttMasExpu.setText("Más expulsiones");
@@ -476,6 +479,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        bttJugadorasPosicion.setBackground(new java.awt.Color(190, 143, 191));
         bttGrupoFunciones.add(bttJugadorasPosicion);
         bttJugadorasPosicion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bttJugadorasPosicion.setText("Jugadoras por posicion");
@@ -521,7 +525,7 @@ public class Menu extends javax.swing.JFrame {
 
         fondoFunciones.add(fondoOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 260, 430));
 
-        tapaPestañas.setBackground(new java.awt.Color(204, 153, 255));
+        tapaPestañas.setBackground(new java.awt.Color(128, 111, 166));
 
         javax.swing.GroupLayout tapaPestañasLayout = new javax.swing.GroupLayout(tapaPestañas);
         tapaPestañas.setLayout(tapaPestañasLayout);
@@ -734,35 +738,35 @@ public class Menu extends javax.swing.JFrame {
         refrescarTablas();
         //Crea el objeto que tendra las filas de la tabla
         Object[] fila = new Object[2];
-        fila[0] = "Boca";
-        fila[1] = controlador.cantidadEquipo("Boca");
+        fila[0] = "BOCA";
+        fila[1] = controlador.cantidadEquipo("BOCA");
         modelEquipos.addRow(fila);
-        fila[0] = "River";
-        fila[1] = controlador.cantidadEquipo("River");
+        fila[0] = "RIVER";
+        fila[1] = controlador.cantidadEquipo("RIVER");
         modelEquipos.addRow(fila);
-        fila[0] = "Racing";
-        fila[1] = controlador.cantidadEquipo("Racing");
+        fila[0] = "RACING";
+        fila[1] = controlador.cantidadEquipo("RACING");
         modelEquipos.addRow(fila);
-        fila[0] = "Independiente";
-        fila[1] = controlador.cantidadEquipo("Independiente");
+        fila[0] = "INDEPENDIENTE";
+        fila[1] = controlador.cantidadEquipo("INDEPENDIENTE");
         modelEquipos.addRow(fila);
-        fila[0] = "Tigre";
-        fila[1] = controlador.cantidadEquipo("Tigre");
+        fila[0] = "TIGRE";
+        fila[1] = controlador.cantidadEquipo("TIGRE");
         modelEquipos.addRow(fila);
-        fila[0] = "Juventud";
-        fila[1] = controlador.cantidadEquipo("Juventud");
+        fila[0] = "JUVENTUD";
+        fila[1] = controlador.cantidadEquipo("JUVENTUD");
         modelEquipos.addRow(fila);
-        fila[0] = "Estudiantes";
-        fila[1] = controlador.cantidadEquipo("Estudiantes");
+        fila[0] = "ESTUDIANTES";
+        fila[1] = controlador.cantidadEquipo("ESTUDIANTES");
         modelEquipos.addRow(fila);
-        fila[0] = "Platense";
-        fila[1] = controlador.cantidadEquipo("Platense");
+        fila[0] = "PLATENSE";
+        fila[1] = controlador.cantidadEquipo("PLATENSE");
         modelEquipos.addRow(fila);
-        fila[0] = "Banfield";
-        fila[1] = controlador.cantidadEquipo("Banfield");
+        fila[0] = "BANFIELD";
+        fila[1] = controlador.cantidadEquipo("BANFIELD");
         modelEquipos.addRow(fila);
-        fila[0] = "Lanus";
-        fila[1] = controlador.cantidadEquipo("Lanus");
+        fila[0] = "LANUS";
+        fila[1] = controlador.cantidadEquipo("LANUS");
         modelEquipos.addRow(fila);
     }//GEN-LAST:event_bttCantJuMouseClicked
 
@@ -798,17 +802,17 @@ public class Menu extends javax.swing.JFrame {
         refrescarTablas();
         //Crea el objeto que tendra las filas de la tabla
         Object[] fila = new Object[2];
-        fila[0] = "Delantera";
-        fila[1] = controlador.jugadorasDePosicion("Delantera");
+        fila[0] = "DELANTERA";
+        fila[1] = controlador.jugadorasDePosicion("DELANTERA");
         modelPosicion.addRow(fila);
-        fila[0] = "Portera";
-        fila[1] = controlador.jugadorasDePosicion("Portera");
+        fila[0] = "ARQUERA";
+        fila[1] = controlador.jugadorasDePosicion("ARQUERA");
         modelPosicion.addRow(fila);
-        fila[0] = "Defensora";
-        fila[1] = controlador.jugadorasDePosicion("Defensora");
+        fila[0] = "DEFENSORA";
+        fila[1] = controlador.jugadorasDePosicion("DEFENSORA");
         modelPosicion.addRow(fila);
-        fila[0] = "Medio Campista";
-        fila[1] = controlador.jugadorasDePosicion("Medio Campista");
+        fila[0] = "MEDIOCAMPISTA";
+        fila[1] = controlador.jugadorasDePosicion("MEDIOCAMPISTA");
         modelPosicion.addRow(fila);
     }//GEN-LAST:event_bttJugadorasPosicionMouseClicked
 
@@ -909,16 +913,22 @@ public class Menu extends javax.swing.JFrame {
     private void bttModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttModificarActionPerformed
         //Crea el lanza error
         boolean error = false;
+        boolean error2 = false;
         //Crea el cartel de muestra error
         JDialog informe = new JDialog(this, "Error!", true);
         informe.setSize(200, 150);
         informe.setLayout(new GridLayout(2, 1));
         informe.setLocationRelativeTo(this);
-        //
+        //Desbloquea el txtdni
+        txtDni.setEnabled(true);
         String dni = txtDni.getText();
         ControladorJugadoras controlador = new ControladorJugadoras();
         controlador.setJugadora(controlador.buscarDniJugadora(dni));
-        controlador.eliminarJugadora(dni);
+        try{
+            controlador.eliminarJugadora(dni);
+        }catch(Exception e) {
+            error2 = true;
+        }
         //Va guardando los datos obtenidos en el controlador, en caso de tener
         //un campo vacio, manda error con la variable error
         controlador.setJugadoraNombre(txtNombre.getText());
@@ -967,10 +977,14 @@ public class Menu extends javax.swing.JFrame {
         if (error) {
             JOptionPane.showMessageDialog(this,"Complete todos los campos.");
         } else {
-            //Guarda la jugadora a la lista
-            controlador.agregarJugadoraALaLista();
-            refrescarTablaCarga();
-            JOptionPane.showMessageDialog(this,"Jugadora modificada con exito.");
+            if(error2) {
+                JOptionPane.showMessageDialog(this,"No se puede modificar. Verifique cantidad de jugadoras en el equipo");
+            } else {
+                //Guarda la jugadora a la lista
+                controlador.agregarJugadoraALaLista();
+                refrescarTablaCarga();
+                JOptionPane.showMessageDialog(this,"Jugadora modificada con exito.");
+            }
         }
         
         //Refresca los txt, los deja sin contenido escrito por el usuario
@@ -984,8 +998,11 @@ public class Menu extends javax.swing.JFrame {
         txtGoles.setText("");
         txtRojas.setText("");
         txtAmarillas.setText("");
+        //Desbloquea el txtdni
+        txtDni.setEnabled(true);
     }//GEN-LAST:event_bttModificarActionPerformed
 
+    //Botton de Eliminar una jugadora
     private void bttEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttEliminarActionPerformed
         //Crea el lanza error
         boolean error = false;
@@ -1011,6 +1028,7 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bttEliminarActionPerformed
 
+    //Boton de buscar una jugadora
     private void bttBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttBuscarActionPerformed
         // TODO add your handling code here:
         String nombre = txtBuscar.getText();
@@ -1035,13 +1053,16 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bttBuscarActionPerformed
 
+    //Boton de actualizar tabla de jugadoras
     private void bttActualizarTabla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttActualizarTabla1ActionPerformed
         // TODO add your handling code here:
         refrescarTablaCarga();
     }//GEN-LAST:event_bttActualizarTabla1ActionPerformed
 
+    //Boton de buscar por goles
     private void bttBuscarCantidadGolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttBuscarCantidadGolesActionPerformed
         // TODO add your handling code here:
+        refrescarTablas();
         int goles = Integer.parseInt((String)txtBuscarCantidadGoles.getText());
         //Controlador 
         ControladorJugadoras controlador = new ControladorJugadoras();
@@ -1089,6 +1110,8 @@ public class Menu extends javax.swing.JFrame {
             txtGoles.setText(Integer.toString(controlador.getGolesJugadora()));
             txtRojas.setText(Integer.toString(controlador.getRojasJugadora()));
             txtAmarillas.setText(Integer.toString(controlador.getAmarillasJugadora()));
+            //Bloquea el txtdni
+            txtDni.setEnabled(false);
         }
     }//GEN-LAST:event_tablaJugadorasMouseClicked
     
@@ -1097,7 +1120,7 @@ public class Menu extends javax.swing.JFrame {
         //Crea un controlador de jugadoras
         ControladorJugadoras controlador = new ControladorJugadoras();
         //Crea el objeto que tendra las filas de la tabla
-        Object[] fila = new Object[5];
+        Object[] fila = new Object[6];
         //Elimina contenido anterior de la tabla
         while (modelJugadoras.getRowCount() > 0) {
             modelJugadoras.removeRow(0);
@@ -1112,9 +1135,21 @@ public class Menu extends javax.swing.JFrame {
             fila[1] = controlador.getNombreJugadora();
             fila[2] = controlador.getApellidoJugadora();
             fila[0] = controlador.getDniJugadora();
+            fila[5] = controlador.getGolesJugadora();
             //Guarda las filas en la tabla
             modelJugadoras.addRow(fila);
-        } 
+        }
+        //Refresca los txt, los deja sin contenido escrito por el usuario
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtNacionalidad.setText("");
+        txtDia.setText("");
+        txtMes.setText("");
+        txtAnio.setText("");
+        txtDni.setText("");
+        txtGoles.setText("");
+        txtRojas.setText("");
+        txtAmarillas.setText("");
     }
     
     
@@ -1122,9 +1157,7 @@ public class Menu extends javax.swing.JFrame {
     //Metodo para refrescar la tabla de funciones
     public final void refrescarTablas() {
         //Elimina contenido anterior de la tabla de Carga
-        while (modelJugadoras.getRowCount() > 0) {
-            modelJugadoras.removeRow(0);
-        }
+        refrescarTablaCarga();
         //Elimina contenido anterior de la tabla de Equipos
         while (modelEquipos.getRowCount() > 0) {
             modelEquipos.removeRow(0);
