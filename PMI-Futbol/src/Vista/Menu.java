@@ -46,7 +46,7 @@ public class Menu extends javax.swing.JFrame {
         tablaEquipos.setModel(modelEquipos);
         
         //Crea un string con las columnas de la tabla de goles
-        String tablagol [] = {"EQUIPO", "NOMBRE","APELLIDO" };
+        String tablagol [] = {"EQUIPO", "NOMBRE","APELLIDO", "GOLES" };
         //Guarda el string en el modelo de goles
         modelGoles.setColumnIdentifiers(tablagol);
         //A la tabla de goles le guarda su modelo correspondiente
@@ -92,6 +92,7 @@ public class Menu extends javax.swing.JFrame {
              }
          }
         });
+        bttModificar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -111,7 +112,6 @@ public class Menu extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtDni = new javax.swing.JTextField();
-        txtNacionalidad = new javax.swing.JTextField();
         lblPosicion = new javax.swing.JLabel();
         lblClub = new javax.swing.JLabel();
         lblGoles = new javax.swing.JLabel();
@@ -129,6 +129,7 @@ public class Menu extends javax.swing.JFrame {
         txtAmarillas = new javax.swing.JTextField();
         txtGoles = new javax.swing.JTextField();
         txtRojas = new javax.swing.JTextField();
+        cboNacionalidad = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaJugadoras = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
@@ -195,8 +196,6 @@ public class Menu extends javax.swing.JFrame {
 
         txtDni.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        txtNacionalidad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
         lblPosicion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblPosicion.setText("Posición");
 
@@ -261,6 +260,9 @@ public class Menu extends javax.swing.JFrame {
 
         txtRojas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        cboNacionalidad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cboNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ARGENTINA", "BOLIVIANA", "PERUANA", "URUGUAYA", "BRASILERA", " ", " " }));
+
         javax.swing.GroupLayout fondoDatosLayout = new javax.swing.GroupLayout(fondoDatos);
         fondoDatos.setLayout(fondoDatosLayout);
         fondoDatosLayout.setHorizontalGroup(
@@ -297,7 +299,7 @@ public class Menu extends javax.swing.JFrame {
                                         .addComponent(cboPosicion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(cboClub, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(fondoDatosLayout.createSequentialGroup()
-                        .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(fondoDatosLayout.createSequentialGroup()
                                 .addComponent(lblNacimiento)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -308,8 +310,8 @@ public class Menu extends javax.swing.JFrame {
                                 .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(fondoDatosLayout.createSequentialGroup()
                                 .addComponent(lblNacionalidad)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cboNacionalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(fondoDatosLayout.createSequentialGroup()
                                 .addGap(45, 45, 45)
@@ -356,7 +358,7 @@ public class Menu extends javax.swing.JFrame {
                         .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblNacionalidad)
-                                .addComponent(txtNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cboNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblAmarillas)
                                 .addComponent(lblTarjetas)
@@ -844,7 +846,7 @@ public class Menu extends javax.swing.JFrame {
         if(controlador.getNacimientoAnioJugadora() == 0){
             error = true;
         }
-        controlador.setJugadoraNacionalidad(txtNacionalidad.getText());
+        controlador.setJugadoraNacionalidad(cboNacionalidad.getSelectedItem().toString());
         if(controlador.getNacionalidadJugadora().isEmpty()){
             error = true;
         }
@@ -890,7 +892,7 @@ public class Menu extends javax.swing.JFrame {
         //Refresca los txt, los deja sin contenido escrito por el usuario
         txtNombre.setText("");
         txtApellido.setText("");
-        txtNacionalidad.setText("");
+        //txtNacionalidad.setText("");
         txtDia.setText("");
         txtMes.setText("");
         txtAnio.setText("");
@@ -898,6 +900,8 @@ public class Menu extends javax.swing.JFrame {
         txtGoles.setText("");
         txtRojas.setText("");
         txtAmarillas.setText("");
+        //
+        bttModificar.setEnabled(false);
     }//GEN-LAST:event_bttCargarActionPerformed
 
     //Boton de volver a la Ventana Principal
@@ -913,7 +917,6 @@ public class Menu extends javax.swing.JFrame {
     private void bttModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttModificarActionPerformed
         //Crea el lanza error
         boolean error = false;
-        boolean error2 = false;
         //Crea el cartel de muestra error
         JDialog informe = new JDialog(this, "Error!", true);
         informe.setSize(200, 150);
@@ -924,11 +927,6 @@ public class Menu extends javax.swing.JFrame {
         String dni = txtDni.getText();
         ControladorJugadoras controlador = new ControladorJugadoras();
         controlador.setJugadora(controlador.buscarDniJugadora(dni));
-        try{
-            controlador.eliminarJugadora(dni);
-        }catch(Exception e) {
-            error2 = true;
-        }
         //Va guardando los datos obtenidos en el controlador, en caso de tener
         //un campo vacio, manda error con la variable error
         controlador.setJugadoraNombre(txtNombre.getText());
@@ -944,7 +942,7 @@ public class Menu extends javax.swing.JFrame {
         if(controlador.getNacimientoAnioJugadora()== 0){
                 error = true;
             }
-        controlador.setJugadoraNacionalidad(txtNacionalidad.getText());
+        controlador.setJugadoraNacionalidad(cboNacionalidad.getSelectedItem().toString());
         if(controlador.getNacionalidadJugadora().isEmpty()){
             error = true;
         }
@@ -953,6 +951,7 @@ public class Menu extends javax.swing.JFrame {
             error = true;
         }
         controlador.setJugadoraClub(cboClub.getSelectedItem().toString());
+        String club = cboClub.getSelectedItem().toString();
         if(controlador.getClubJugadora().isEmpty()){
             error = true;
         }
@@ -977,20 +976,27 @@ public class Menu extends javax.swing.JFrame {
         if (error) {
             JOptionPane.showMessageDialog(this,"Complete todos los campos.");
         } else {
-            if(error2) {
-                JOptionPane.showMessageDialog(this,"No se puede modificar. Verifique cantidad de jugadoras en el equipo");
-            } else {
-                //Guarda la jugadora a la lista
+            //Guarda la jugadora a la lista
+            if(5 == controlador.cantidadJugadorasPorEquipo(club)) {
                 controlador.agregarJugadoraALaLista();
-                refrescarTablaCarga();
+                controlador.setJugadora(controlador.buscarDniJugadora(dni));
+                controlador.eliminarJugadora(dni);
+                JOptionPane.showMessageDialog(this,"Jugadora modificada con exito.");
+            }
+            if(7 == controlador.cantidadJugadorasPorEquipo(club)) {
+                controlador.setJugadora(controlador.buscarDniJugadora(dni));
+                controlador.eliminarJugadora(dni);
+                controlador.agregarJugadoraALaLista();
                 JOptionPane.showMessageDialog(this,"Jugadora modificada con exito.");
             }
         }
         
+        refrescarTablaCarga();
+        
         //Refresca los txt, los deja sin contenido escrito por el usuario
         txtNombre.setText("");
         txtApellido.setText("");
-        txtNacionalidad.setText("");
+        //txtNacionalidad.setText("");
         txtDia.setText("");
         txtMes.setText("");
         txtAnio.setText("");
@@ -998,8 +1004,7 @@ public class Menu extends javax.swing.JFrame {
         txtGoles.setText("");
         txtRojas.setText("");
         txtAmarillas.setText("");
-        //Desbloquea el txtdni
-        txtDni.setEnabled(true);
+        bttCargar.setEnabled(true);
     }//GEN-LAST:event_bttModificarActionPerformed
 
     //Botton de Eliminar una jugadora
@@ -1012,32 +1017,55 @@ public class Menu extends javax.swing.JFrame {
         informe.setLayout(new GridLayout(2, 1));
         informe.setLocationRelativeTo(this);
         
-        //lol que mal
+        //Guarda el dni
         String dni = txtDni.getText();
+        //Crea controlador
         ControladorJugadoras controlador = new ControladorJugadoras();
+        //Intenta eliminar
         try{
             controlador.eliminarJugadora(dni);
         } catch(Exception e){
             error = true;
         }
         if (error){
-            JOptionPane.showMessageDialog(this,"No se pudo eliminar.");
+            JOptionPane.showMessageDialog(this,"No se puede eliminar. Minimo de jugadoras en equipo");
         }
         else {
-            JOptionPane.showMessageDialog(this,"Jugadora eliminada,.");
+            String str = txtNombre.getText();
+            if(str.isEmpty()){
+                JOptionPane.showMessageDialog(this,"No hay datos.");
+            }
+            else {
+                JOptionPane.showMessageDialog(this,"Jugadora eliminada.");
+            }
         }
+        bttCargar.setEnabled(true);
+        txtDni.setEnabled(true);
+        //Refresca los txt, los deja sin contenido escrito por el usuario
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtDia.setText("");
+        txtMes.setText("");
+        txtAnio.setText("");
+        txtDni.setText("");
+        txtGoles.setText("");
+        txtRojas.setText("");
+        txtAmarillas.setText("");
+        refrescarTablas();
+        //
+        bttModificar.setEnabled(false);
     }//GEN-LAST:event_bttEliminarActionPerformed
 
     //Boton de buscar una jugadora
     private void bttBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttBuscarActionPerformed
         // TODO add your handling code here:
-        String nombre = txtBuscar.getText();
+        String nombre = txtBuscar.getText().toUpperCase();
         ControladorJugadoras controlador = new ControladorJugadoras();
         for (int i = 0; i < controlador.busqueda_Nombre(nombre).size(); i++) {
             controlador.guardarJugadora(controlador.busqueda_Nombre(nombre), i);
             
             //Crea el objeto que tendra las filas de la tabla
-            Object[] fila = new Object[5];
+            Object[] fila = new Object[6];
             //Elimina contenido anterior de la tabla
             while (modelJugadoras.getRowCount() > 0) {
                 modelJugadoras.removeRow(0);
@@ -1048,15 +1076,60 @@ public class Menu extends javax.swing.JFrame {
             fila[1] = controlador.getNombreJugadora();
             fila[2] = controlador.getApellidoJugadora();
             fila[4] = controlador.getPosicionJugadora();
+            fila[5] = controlador.getDniJugadora();
             //Guarda las filas en la tabla
             modelJugadoras.addRow(fila);
         }
+        if(controlador.busqueda_Nombre(nombre).isEmpty()){
+            controlador.setJugadora(controlador.buscarDniJugadora(nombre));
+            
+            //Crea el objeto que tendra las filas de la tabla
+            Object[] fila = new Object[6];
+            //Elimina contenido anterior de la tabla
+            while (modelJugadoras.getRowCount() > 0) {
+                modelJugadoras.removeRow(0);
+            }          
+            //Va guardando los datos correspondientes en las filas del objeto
+            fila[0] = controlador.getDniJugadora();
+            fila[3] = controlador.getClubJugadora();
+            fila[1] = controlador.getNombreJugadora();
+            fila[2] = controlador.getApellidoJugadora();
+            fila[4] = controlador.getPosicionJugadora();
+            fila[5] = controlador.getDniJugadora();
+            //Guarda las filas en la tabla
+            modelJugadoras.addRow(fila);
+        }
+        if(controlador.busqueda_Nombre(nombre).isEmpty()){
+            for (int i = 0; i < controlador.busquedaApellido(nombre).size(); i++) {
+                controlador.guardarJugadora(controlador.busquedaApellido(nombre), i);
+            
+                //Crea el objeto que tendra las filas de la tabla
+                Object[] fila = new Object[6];
+                //Elimina contenido anterior de la tabla
+                while (modelJugadoras.getRowCount() > 0) {
+                    modelJugadoras.removeRow(0);
+                }          
+                //Va guardando los datos correspondientes en las filas del objeto
+                fila[0] = controlador.getDniJugadora();
+                fila[3] = controlador.getClubJugadora();
+                fila[1] = controlador.getNombreJugadora();
+                fila[2] = controlador.getApellidoJugadora();
+                fila[4] = controlador.getPosicionJugadora();
+                fila[5] = controlador.getDniJugadora();
+                //Guarda las filas en la tabla
+                modelJugadoras.addRow(fila);
+            }
+        }
+        bttModificar.setEnabled(false);
     }//GEN-LAST:event_bttBuscarActionPerformed
 
     //Boton de actualizar tabla de jugadoras
     private void bttActualizarTabla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttActualizarTabla1ActionPerformed
         // TODO add your handling code here:
         refrescarTablaCarga();
+        txtDni.setEnabled(true);
+        bttCargar.setEnabled(true);
+        bttModificar.setEnabled(false);
     }//GEN-LAST:event_bttActualizarTabla1ActionPerformed
 
     //Boton de buscar por goles
@@ -1067,17 +1140,19 @@ public class Menu extends javax.swing.JFrame {
         //Controlador 
         ControladorJugadoras controlador = new ControladorJugadoras();
         //Crea el objeto que tendra las filas de la tabla
-        Object[] fila = new Object[3];
+        Object[] fila = new Object[4];
         //Recorre la lista de cantidad de goles
         for(int i = 0; i < controlador.cantGoles(goles).size();i++) {
             controlador.guardarJugadora(controlador.cantGoles(goles), i);
             fila[0] = controlador.getClubJugadora();
             fila[1] = controlador.getNombreJugadora();
             fila[2] = controlador.getApellidoJugadora();
+            fila[3] = controlador.getGolesJugadora();
             modelGoles.addRow(fila);
         }
     }//GEN-LAST:event_bttBuscarCantidadGolesActionPerformed
 
+    //Accion de tocar la tabla
     private void tablaJugadorasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaJugadorasMouseClicked
         // TODO add your handling code here:
         int row = tablaJugadoras.getSelectedRow();
@@ -1086,33 +1161,25 @@ public class Menu extends javax.swing.JFrame {
         ControladorJugadoras controlador = new ControladorJugadoras();
         // Obtener el contenido de la celda seleccionada
         if(row != -1 && col != -1) {
-            String dni = (String)tablaJugadoras.getValueAt(row, col);
+            String dni = (String)tablaJugadoras.getValueAt(row, 0);
             controlador.setJugadora(controlador.buscarDniJugadora(dni));
             txtNombre.setText(controlador.getNombreJugadora());
             txtApellido.setText(controlador.getApellidoJugadora());
             txtDni.setText(controlador.getDniJugadora());
-            txtNacionalidad.setText(controlador.getNacionalidadJugadora());
+            cboNacionalidad.setSelectedItem(controlador.getNacionalidadJugadora());
             txtDia.setText(Integer.toString(controlador.getNacimientoDiaJugadora()));
             txtMes.setText(Integer.toString(controlador.getNacimientoMesJugadora()));
             txtAnio.setText(Integer.toString(controlador.getNacimientoAnioJugadora()));
-            /*String posicion = controlador.getPosicionJugadora();
-            for (int i = 0; i < 4; i++){
-                if(cboPosicion.getComponent(i).equals(posicion)) {
-                    cboPosicion.setSelectedIndex(i);      
-                }
-            }
-            String club = controlador.getClubJugadora();
-            for (int i = 0; i < 10; i++){
-                if(cboClub.getComponent(i).equals(club)) {
-                    cboClub.setSelectedIndex(i);      
-                }
-            }*/
+            cboPosicion.setSelectedItem(controlador.getPosicionJugadora());
+            cboClub.setSelectedItem(controlador.getClubJugadora());
             txtGoles.setText(Integer.toString(controlador.getGolesJugadora()));
             txtRojas.setText(Integer.toString(controlador.getRojasJugadora()));
             txtAmarillas.setText(Integer.toString(controlador.getAmarillasJugadora()));
             //Bloquea el txtdni
             txtDni.setEnabled(false);
+            bttCargar.setEnabled(false);
         }
+        bttModificar.setEnabled(true);
     }//GEN-LAST:event_tablaJugadorasMouseClicked
     
     //Metodo para refrescar la tabla de jugadoras
@@ -1142,7 +1209,7 @@ public class Menu extends javax.swing.JFrame {
         //Refresca los txt, los deja sin contenido escrito por el usuario
         txtNombre.setText("");
         txtApellido.setText("");
-        txtNacionalidad.setText("");
+        //txtNacionalidad.setText("");
         txtDia.setText("");
         txtMes.setText("");
         txtAnio.setText("");
@@ -1151,9 +1218,6 @@ public class Menu extends javax.swing.JFrame {
         txtRojas.setText("");
         txtAmarillas.setText("");
     }
-    
-    
-    
     //Metodo para refrescar la tabla de funciones
     public final void refrescarTablas() {
         //Elimina contenido anterior de la tabla de Carga
@@ -1192,6 +1256,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel cantGol;
     private javax.swing.JPanel cantJu;
     private javax.swing.JComboBox<String> cboClub;
+    private javax.swing.JComboBox<String> cboNacionalidad;
     private javax.swing.JComboBox<String> cboPosicion;
     private javax.swing.JPanel fondoDatos;
     private javax.swing.JPanel fondoFunciones;
@@ -1234,7 +1299,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtGoles;
     private javax.swing.JTextField txtMes;
-    private javax.swing.JTextField txtNacionalidad;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtRojas;
     private javax.swing.JPanel vacio;

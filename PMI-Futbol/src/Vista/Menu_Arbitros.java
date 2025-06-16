@@ -84,6 +84,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtDni = new javax.swing.JTextField();
+        txtNacionalidad = new javax.swing.JTextField();
         lblTarjetas = new javax.swing.JLabel();
         txtDia = new javax.swing.JTextField();
         txtMes = new javax.swing.JTextField();
@@ -93,7 +94,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         bttEliminar = new javax.swing.JButton();
         CkBttInternacional = new javax.swing.JCheckBox();
         txtTarjetas = new javax.swing.JTextField();
-        CBNacionalidad = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaArbitros = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
@@ -154,6 +154,10 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         txtDni.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtDni.setForeground(new java.awt.Color(255, 255, 255));
 
+        txtNacionalidad.setBackground(new java.awt.Color(61, 74, 90));
+        txtNacionalidad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNacionalidad.setForeground(new java.awt.Color(255, 255, 255));
+
         lblTarjetas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTarjetas.setText("Tarjetas sacadas");
 
@@ -173,7 +177,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         bttModificar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         bttModificar.setForeground(new java.awt.Color(255, 255, 255));
         bttModificar.setText("Modificar");
-        bttModificar.setEnabled(false);
         bttModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttModificarActionPerformed(evt);
@@ -220,18 +223,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             }
         });
 
-        CBNacionalidad.setBackground(new java.awt.Color(61, 74, 90));
-        CBNacionalidad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        CBNacionalidad.setForeground(new java.awt.Color(255, 255, 255));
-        CBNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ARGENTINA", "BOLIVIANA", "PERUANA", "URUGUAYA", "BRASILERA", "ARGENTINA", "BOLIVIANA", "PERUANA", "URUGUAYA", "BRASILERA" }));
-        CBNacionalidad.setToolTipText("");
-        CBNacionalidad.setBorder(null);
-        CBNacionalidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBNacionalidadActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout fondoDatosLayout = new javax.swing.GroupLayout(fondoDatos);
         fondoDatos.setLayout(fondoDatosLayout);
         fondoDatosLayout.setHorizontalGroup(
@@ -251,7 +242,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
                             .addComponent(txtDni, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                             .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                             .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                            .addComponent(CBNacionalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtNacionalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CkBttInternacional)
@@ -298,9 +289,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNacionalidad)
-                            .addGroup(fondoDatosLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(CBNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -493,15 +482,15 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         
         //Va guardando los datos obtenidos en el controlador, en caso de tener
         //un campo vacio, manda error con la variable error
-        controlador.setArbitroNombre(txtNombre.getText());
+        controlador.setArbitroNombre(txtNombre.getText().toUpperCase());
         if(controlador.getArbitroNombre().isEmpty()){
             throw new RuntimeException();
         }
-        controlador.setArbitroApellido(txtApellido.getText());
+        controlador.setArbitroApellido(txtApellido.getText().toUpperCase());
         if(controlador.getArbitroApellido().isEmpty()){
             throw new RuntimeException();
         }
-        controlador.setArbitroNacionalidad(CBNacionalidad.getSelectedItem().toString());
+        controlador.setArbitroNacionalidad(txtNacionalidad.getText().toUpperCase());
         if(controlador.getArbitroNacionalidad().isEmpty()){
             throw new RuntimeException();
         }
@@ -539,7 +528,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         //Refresca los txt, los deja sin contenido escrito por el usuario
         txtNombre.setText("");
         txtApellido.setText("");
-        CBNacionalidad.setSelectedItem("");
+        txtNacionalidad.setText("");
         txtDia.setText("");
         txtMes.setText("");
         txtAnio.setText("");
@@ -562,15 +551,15 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         ControladorArbitros controlador = new ControladorArbitros();
             //Va guardando los datos obtenidos en el controlador, en caso de tener
             //un campo vacio, manda error con la variable error
-        controlador.setArbitroNombre(txtNombre.getText());
+        controlador.setArbitroNombre(txtNombre.getText().toUpperCase());
         if(controlador.getArbitroNombre().isEmpty()){
             error = true;
         }
-        controlador.setArbitroApellido(txtApellido.getText());
+        controlador.setArbitroApellido(txtApellido.getText().toUpperCase());
         if(controlador.getArbitroApellido().isEmpty()){
             error = true;
         }
-        controlador.setArbitroNacionalidad(CBNacionalidad.getSelectedItem().toString());
+        controlador.setArbitroNacionalidad(txtNacionalidad.getText().toUpperCase());
         if(controlador.getArbitroNacionalidad().isEmpty()){
             error = true;
         }
@@ -611,7 +600,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         //Refresca los txt, los deja sin contenido escrito por el usuario
         txtNombre.setText("");
         txtApellido.setText("");
-        CBNacionalidad.setSelectedItem("");
+        txtNacionalidad.setText("");
         txtDia.setText("");
         txtMes.setText("");
         txtAnio.setText("");
@@ -649,7 +638,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
                 //Refresca los txt, los deja sin contenido escrito por el usuario
         txtNombre.setText("");
         txtApellido.setText("");
-        CBNacionalidad.setSelectedItem("");
+        txtNacionalidad.setText("");
         txtDia.setText("");
         txtMes.setText("");
         txtAnio.setText("");
@@ -660,7 +649,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
 
     private void bttBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttBuscarActionPerformed
         // TODO add your handling code here:
-        String nombreDni = txtBuscar.getText().toUpperCase();
+        String nombre = txtBuscar.getText().toUpperCase();
         
         ControladorArbitros controlador = new ControladorArbitros();
         //Crea el objeto que tendra las filas de la tabla
@@ -669,8 +658,8 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         while (modelArbitros.getRowCount() > 0) {
         modelArbitros.removeRow(0);
             }
-        try{
-            controlador.setArbitro(controlador.getArbitroPorDni(nombreDni));
+        for (int i = 0; i < controlador.getArbitroSoloPorNombre(nombre).size(); i++) {
+            controlador.setArbitroDeListaExterna(controlador.getArbitroSoloPorNombre(nombre), i);
             //Va guardando los datos correspondientes en las filas del objeto
             fila[0] = Boolean.toString(controlador.isArbitroInternacional());
             fila[1] = Integer.toString(controlador.getArbitroTarjetas());
@@ -682,36 +671,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             //Guarda las filas en la tabla
             modelArbitros.addRow(fila);
         }
-        catch(Exception e){
-           for (int i = 0; i < controlador.getArbitroSoloPorNombre(nombreDni).size(); i++) {
-                controlador.setArbitroDeListaExterna(controlador.getArbitroSoloPorNombre(nombreDni), i);
-                //Va guardando los datos correspondientes en las filas del objeto
-                fila[0] = Boolean.toString(controlador.isArbitroInternacional());
-                fila[1] = Integer.toString(controlador.getArbitroTarjetas());
-                fila[2] = controlador.getArbitroNombre();
-                fila[3] = controlador.getArbitroApellido();
-                fila[4] = controlador.getArbitroDni();
-                fila[5] = (Integer.toString(controlador.getArbitroNacimientoDia())+"/"+Integer.toString(controlador.getArbitroNacimientoMes())+"/"+
-                            Integer.toString(controlador.getArbitroNacimientoAnio()));
-                //Guarda las filas en la tabla
-                modelArbitros.addRow(fila);
-            }
-           for (int i = 0; i < controlador.getArbitroSoloPorApellido(nombreDni).size(); i++) {
-                controlador.setArbitroDeListaExterna(controlador.getArbitroSoloPorApellido(nombreDni), i);
-                //Va guardando los datos correspondientes en las filas del objeto
-                fila[0] = Boolean.toString(controlador.isArbitroInternacional());
-                fila[1] = Integer.toString(controlador.getArbitroTarjetas());
-                fila[2] = controlador.getArbitroNombre();
-                fila[3] = controlador.getArbitroApellido();
-                fila[4] = controlador.getArbitroDni();
-                fila[5] = (Integer.toString(controlador.getArbitroNacimientoDia())+"/"+Integer.toString(controlador.getArbitroNacimientoMes())+"/"+
-                            Integer.toString(controlador.getArbitroNacimientoAnio()));
-                //Guarda las filas en la tabla
-                modelArbitros.addRow(fila);
-            }
-        
-        }
-        
     }//GEN-LAST:event_bttBuscarActionPerformed
     
 //Metodo para refrescar la tabla de arbitros
@@ -720,7 +679,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         ControladorArbitros controlador = new ControladorArbitros();
         //Crea el objeto que tendra las filas de la tabla
         String[] fila = new String[6];
-        String internacionalidad;
         //Elimina contenido anterior de la tabla
         while (modelArbitros.getRowCount() > 0) {
             modelArbitros.removeRow(0);
@@ -730,13 +688,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             //Guarda la jugadora de dicho lugar de la fila en la variable jugadora del controlador
             controlador.setArbitro(controlador.getArbitroLista(i));
             //Va guardando los datos correspondientes en las filas del objeto
-            if (controlador.isArbitroInternacional()){
-                internacionalidad = "Internacional";
-                    }
-            else{
-                internacionalidad = "Local";
-            }
-            fila[0] = internacionalidad;
+            fila[0] = Boolean.toString(controlador.isArbitroInternacional());
             fila[1] = Integer.toString(controlador.getArbitroTarjetas());
             fila[2] = controlador.getArbitroNombre();
             fila[3] = controlador.getArbitroApellido();
@@ -745,21 +697,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
                         Integer.toString(controlador.getArbitroNacimientoAnio()));
             //Guarda las filas en la tabla
             modelArbitros.addRow(fila);
-            //Refresca los txt, los deja sin contenido escrito por el usuario
-            txtNombre.setText("");
-            txtApellido.setText("");
-            CBNacionalidad.setSelectedItem("");
-            txtDia.setText("");
-            txtMes.setText("");
-            txtAnio.setText("");
-            txtDni.setText("");
-            txtDni.setEnabled(true);
-            txtTarjetas.setText("");
-            CkBttInternacional.setSelected(false);
-            bttCargar.setEnabled(true);
-            bttModificar.setEnabled(false);
-            
-        
         } 
     }
     public void refrescarTablaFunciones(){
@@ -771,7 +708,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         while (modelFunciones.getRowCount() > 0) {
             modelFunciones.removeRow(0);
         }
-
         if((boolean)ChkBxFiltroInternacional.isSelected() == true){
             //Recorre la lista del controlador
             for (int i = 0; i < controlador.getArbitrosInternacionales().size(); i++) {
@@ -846,22 +782,17 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         int col = tablaArbitros.getSelectedColumn();
         ControladorArbitros controlador = new ControladorArbitros();
         if(row != -1 && col != -1){
-            String dni = (String)tablaArbitros.getValueAt(row,4);
+            String dni = (String)tablaArbitros.getValueAt(row, col);
             controlador.setArbitro(controlador.getArbitroPorDni(dni));
             txtNombre.setText(controlador.getArbitroNombre());
             txtApellido.setText(controlador.getArbitroApellido());
             txtDni.setText(controlador.getArbitroDni());
-            CBNacionalidad.setSelectedItem(controlador.getArbitroNacionalidad());
+            txtNacionalidad.setText(controlador.getArbitroNacionalidad());
             txtDia.setText(Integer.toString(controlador.getArbitroNacimientoDia()));
             txtMes.setText(Integer.toString(controlador.getArbitroNacimientoMes()));
             txtAnio.setText(Integer.toString(controlador.getArbitroNacimientoAnio()));
             txtTarjetas.setText(Integer.toString(controlador.getArbitroTarjetas()));
             CkBttInternacional.setSelected(controlador.isArbitroInternacional());
-            txtDni.setEnabled(false);
-            bttCargar.setEnabled(false);
-            bttModificar.setEnabled(true);
-
-
         }
         
         
@@ -872,16 +803,11 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    private void CBNacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBNacionalidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CBNacionalidadActionPerformed
-
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CBNacionalidad;
     private javax.swing.JCheckBox ChkBxFiltroInternacional;
     private javax.swing.JCheckBox CkBttInternacional;
     private javax.swing.JButton bttActualizarFiltro;
@@ -914,6 +840,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
     private javax.swing.JTextField txtDia;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtMes;
+    private javax.swing.JTextField txtNacionalidad;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTarjetas;
     // End of variables declaration//GEN-END:variables
