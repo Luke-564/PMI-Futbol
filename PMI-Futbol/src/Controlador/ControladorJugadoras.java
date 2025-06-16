@@ -84,6 +84,17 @@ public class ControladorJugadoras {
         return listaTemp;
     } 
     
+    //Hace una lista temporal de las jugadoras con el mismo apellido
+    public List<Jugadora> busquedaApellido(String nombre) {
+        List <Jugadora> listaTemp = new ArrayList<>();
+        for(Jugadora ju : listaJu) {
+            if (ju.getApellido().equals(nombre)){
+                listaTemp.add(ju);
+            }
+        }
+        return listaTemp;
+    } 
+    
     //Devuelve una jugadora por su dni
     public Jugadora buscarDniJugadora(String dni) {
         for(Jugadora ju : listaJu) {
