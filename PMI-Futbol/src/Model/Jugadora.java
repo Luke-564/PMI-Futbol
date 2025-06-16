@@ -13,8 +13,8 @@ public class Jugadora extends Persona implements Comparable <Jugadora> {
     }
     public Jugadora(String posicion, String club, int goles, int t_Amarillas,
             int t_Rojas) {
-        this.posicion = posicion;
-        this.club = club;
+        this.posicion = posicion.toUpperCase();
+        this.club = club.toUpperCase();
         this.goles = goles;
         this.t_Amarillas = t_Amarillas;
         this.t_Rojas = t_Rojas;
@@ -22,8 +22,8 @@ public class Jugadora extends Persona implements Comparable <Jugadora> {
     public Jugadora(String posicion, String club, int goles, int t_Amarillas, int t_Rojas,
             String nombre, String apellido, Fecha nacimiento, String nacionalidad, String dni) {
         super(nombre, apellido, nacimiento, nacionalidad, dni);
-        this.posicion = posicion;
-        this.club = club;
+        this.posicion = posicion.toUpperCase();
+        this.club = club.toUpperCase();
         this.goles = goles;
         this.t_Amarillas = t_Amarillas;
         this.t_Rojas = t_Rojas;
@@ -46,10 +46,10 @@ public class Jugadora extends Persona implements Comparable <Jugadora> {
     }
     //Setters / Modificadores
     public void setPosicion(String posicion) {
-        this.posicion = posicion;
+        this.posicion = posicion.toUpperCase();
     }
     public void setClub(String club) {
-        this.club = club;
+        this.club = club.toUpperCase();
     }
     public void setGoles(int goles) {
         this.goles = goles;

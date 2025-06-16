@@ -12,11 +12,11 @@ public class Persona {
     }
     public Persona(String nombre, String apellido, Fecha nacimiento, 
             String nacionalidad, String dni) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this.nombre = nombre.toUpperCase();
+        this.apellido = apellido.toUpperCase();
         this.nacimiento = nacimiento;
-        this.nacionalidad = nacionalidad;
-        this.dni = dni;
+        this.nacionalidad = nacionalidad.toUpperCase();
+        this.dni = dni.toUpperCase();
     }
     //Getters / Observadores
     public String getNombre() {
@@ -42,10 +42,10 @@ public class Persona {
     }
     //Setters / Modificadores
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombre = nombre.toUpperCase();
     }
     public void setApellido(String apellido) {
-        this.apellido = apellido;
+        this.apellido = apellido.toUpperCase();
     }
     public void setNacimiento(int dia, int mes, int anio) {
         this.nacimiento.setDia(dia);
@@ -53,10 +53,10 @@ public class Persona {
         this.nacimiento.setAnio(anio);
     }
     public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
+        this.nacionalidad = nacionalidad.toUpperCase();
     }
     public void setDni(String dni) {
-        this.dni = dni;
+        this.dni = dni.toUpperCase();
     }
     
     //toString, no se si es necesario pero por las dudas
