@@ -679,6 +679,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         ControladorArbitros controlador = new ControladorArbitros();
         //Crea el objeto que tendra las filas de la tabla
         String[] fila = new String[6];
+        String internacionalidad;
         //Elimina contenido anterior de la tabla
         while (modelArbitros.getRowCount() > 0) {
             modelArbitros.removeRow(0);
@@ -688,7 +689,13 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             //Guarda la jugadora de dicho lugar de la fila en la variable jugadora del controlador
             controlador.setArbitro(controlador.getArbitroLista(i));
             //Va guardando los datos correspondientes en las filas del objeto
-            fila[0] = Boolean.toString(controlador.isArbitroInternacional());
+            if (controlador.isArbitroInternacional()){
+                internacionalidad = "Internacional";
+                    }
+            else{
+                internacionalidad = "Local";
+            }
+            fila[0] = internacionalidad;
             fila[1] = Integer.toString(controlador.getArbitroTarjetas());
             fila[2] = controlador.getArbitroNombre();
             fila[3] = controlador.getArbitroApellido();
