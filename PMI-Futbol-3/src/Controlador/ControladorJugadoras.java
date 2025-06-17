@@ -14,6 +14,7 @@ public class ControladorJugadoras {
     private Jugadora jugadora = new Jugadora ();
     private static ArrayList <Jugadora> listaJu = new ArrayList<>(); 
     private static HashMap<String, Integer> equipos = new HashMap<>();
+    private static String club = new String ();
     
     //Constructores
     
@@ -24,6 +25,15 @@ public class ControladorJugadoras {
     public ControladorJugadoras(HashMap mapa, ArrayList lista) {
         ControladorJugadoras.equipos = mapa;
         ControladorJugadoras.listaJu = lista;
+    }
+    
+    //Get
+    public String getClub() {
+        return ControladorJugadoras.club;
+    }
+    //Set
+    public void setClub(String equipo) {
+        ControladorJugadoras.club = equipo;
     }
  
     //Metodos
@@ -100,6 +110,7 @@ public class ControladorJugadoras {
         }
         //Devuelve una jugadora vacia si no iguala el dni
         Jugadora juga = new Jugadora();
+        juga.setDni("");
         return juga;
     }
      
