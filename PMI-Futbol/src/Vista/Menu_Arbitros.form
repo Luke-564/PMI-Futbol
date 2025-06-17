@@ -479,6 +479,9 @@
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablaArbitrosMouseClicked"/>
                       </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;&#xa;public boolean isCellEditable(int row, int column) {                &#xa;                return false;               &#xa;        };&#xa;}"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -688,6 +691,9 @@
                           <Table columnCount="0" rowCount="4"/>
                         </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;&#xa;public boolean isCellEditable(int row, int column) {                &#xa;                return false;               &#xa;        };&#xa;&#xa;}"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>

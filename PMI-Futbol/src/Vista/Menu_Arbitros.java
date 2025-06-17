@@ -95,7 +95,12 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         txtTarjetas = new javax.swing.JTextField();
         CBNacionalidad = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaArbitros = new javax.swing.JTable();
+        tablaArbitros = new javax.swing.JTable(){
+
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            };
+        };
         txtBuscar = new javax.swing.JTextField();
         bttBuscar = new javax.swing.JButton();
         bttActualizarTabla = new javax.swing.JButton();
@@ -106,7 +111,13 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         lblFiltros = new javax.swing.JLabel();
         bttActualizarFiltro = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tablaFunciones = new javax.swing.JTable();
+        tablaFunciones = new javax.swing.JTable(){
+
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            };
+
+        };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
