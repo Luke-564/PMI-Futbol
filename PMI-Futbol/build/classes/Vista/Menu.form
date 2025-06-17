@@ -46,7 +46,7 @@
     <Container class="javax.swing.JPanel" name="fondoPrincipal">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="cc" red="ff" type="rgb"/>
+          <Color blue="f2" green="eb" red="f2" type="rgb"/>
         </Property>
       </Properties>
 
@@ -57,7 +57,7 @@
         <Container class="javax.swing.JTabbedPane" name="pesta&#xf1;as">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="99" type="rgb"/>
+              <Color blue="d9" green="c5" red="c6" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -74,7 +74,7 @@
             <Container class="javax.swing.JPanel" name="fondoJugadoras">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="99" red="cc" type="rgb"/>
+                  <Color blue="a6" green="6f" red="80" type="rgb"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -99,7 +99,7 @@
                 <Container class="javax.swing.JPanel" name="fondoDatos">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
+                      <Color blue="bf" green="8f" red="be" type="rgb"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -154,8 +154,8 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Component id="lblNacimiento" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="txtDia" min="-2" pref="58" max="-2" attributes="0"/>
@@ -164,10 +164,10 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="txtAnio" min="-2" pref="58" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Component id="lblNacionalidad" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txtNacionalidad" min="-2" pref="238" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="cboNacionalidad" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -186,7 +186,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="61" max="32767" attributes="0"/>
+                              <EmptySpace pref="54" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="bttModificar" max="32767" attributes="0"/>
@@ -228,7 +228,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="lblNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cboNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                               <Component id="lblAmarillas" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -322,13 +322,6 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtNacionalidad">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI" size="18" style="0"/>
-                        </Property>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="lblPosicion">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -368,10 +361,10 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
-                            <StringItem index="0" value="Delantera"/>
-                            <StringItem index="1" value="Portera"/>
-                            <StringItem index="2" value="Defensora"/>
-                            <StringItem index="3" value="Medio Campista"/>
+                            <StringItem index="0" value="DELANTERA"/>
+                            <StringItem index="1" value="ARQUERA"/>
+                            <StringItem index="2" value="DEFENSORA"/>
+                            <StringItem index="3" value="MEDIOCAMPISTA"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -386,16 +379,16 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="10">
-                            <StringItem index="0" value="Boca"/>
-                            <StringItem index="1" value="River"/>
-                            <StringItem index="2" value="Racing"/>
-                            <StringItem index="3" value="Independiente"/>
-                            <StringItem index="4" value="Tigre"/>
-                            <StringItem index="5" value="Juventud"/>
-                            <StringItem index="6" value="Estudiantes"/>
-                            <StringItem index="7" value="Platense "/>
-                            <StringItem index="8" value="Banfield&#xa0;"/>
-                            <StringItem index="9" value="Lanus"/>
+                            <StringItem index="0" value="BOCA"/>
+                            <StringItem index="1" value="RIVER"/>
+                            <StringItem index="2" value="RACING"/>
+                            <StringItem index="3" value="INDEPENDIENTE"/>
+                            <StringItem index="4" value="TIGRE"/>
+                            <StringItem index="5" value="JUVENTUD"/>
+                            <StringItem index="6" value="ESTUDIANTES"/>
+                            <StringItem index="7" value="PLATENSE"/>
+                            <StringItem index="8" value="BANFIELD"/>
+                            <StringItem index="9" value="LANUS"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -437,7 +430,7 @@
                     <Component class="javax.swing.JButton" name="bttModificar">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="cc" red="ff" type="rgb"/>
+                          <Color blue="f2" green="eb" red="f2" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="36" style="1"/>
@@ -446,7 +439,7 @@
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder thickness="2">
-                              <Color PropertyName="color" blue="99" green="99" red="ff" type="rgb"/>
+                              <Color PropertyName="color" blue="d9" green="c5" red="c6" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -458,7 +451,7 @@
                     <Component class="javax.swing.JButton" name="bttCargar">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="cc" red="ff" type="rgb"/>
+                          <Color blue="f2" green="eb" red="f2" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="36" style="1"/>
@@ -467,7 +460,7 @@
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder thickness="2">
-                              <Color PropertyName="color" blue="99" green="99" red="ff" type="rgb"/>
+                              <Color PropertyName="color" blue="d9" green="c5" red="c6" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -479,7 +472,7 @@
                     <Component class="javax.swing.JButton" name="bttEliminar">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="66" red="cc" type="rgb"/>
+                          <Color blue="8c" green="61" red="30" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="36" style="1"/>
@@ -488,7 +481,7 @@
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder thickness="2">
-                              <Color PropertyName="color" blue="99" green="0" red="99" type="rgb"/>
+                              <Color PropertyName="color" blue="70" green="33" red="52" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -517,6 +510,27 @@
                           <Font name="Segoe UI" size="18" style="0"/>
                         </Property>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cboNacionalidad">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI" size="18" style="0"/>
+                        </Property>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="7">
+                            <StringItem index="0" value="ARGENTINA"/>
+                            <StringItem index="1" value="BOLIVIANA"/>
+                            <StringItem index="2" value="PERUANA"/>
+                            <StringItem index="3" value="URUGUAYA"/>
+                            <StringItem index="4" value="BRASILERA"/>
+                            <StringItem index="5" value=" "/>
+                            <StringItem index="6" value=" "/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -562,7 +576,7 @@
                 <Component class="javax.swing.JButton" name="bttBuscar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="ff" type="rgb"/>
+                      <Color blue="f2" green="eb" red="f2" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="18" style="0"/>
@@ -571,7 +585,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder thickness="2">
-                          <Color PropertyName="color" blue="99" green="99" red="ff" type="rgb"/>
+                          <Color PropertyName="color" blue="d9" green="c5" red="c6" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -588,7 +602,7 @@
                 <Component class="javax.swing.JButton" name="bttVolver">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="66" red="66" type="rgb"/>
+                      <Color blue="8c" green="61" red="30" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="18" style="1"/>
@@ -597,7 +611,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder thickness="3">
-                          <Color PropertyName="color" blue="99" green="0" red="33" type="rgb"/>
+                          <Color PropertyName="color" blue="70" green="33" red="52" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -614,7 +628,7 @@
                 <Component class="javax.swing.JButton" name="bttActualizarTabla1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="ff" type="rgb"/>
+                      <Color blue="f2" green="eb" red="f2" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="18" style="0"/>
@@ -623,7 +637,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder thickness="2">
-                          <Color PropertyName="color" blue="99" green="99" red="ff" type="rgb"/>
+                          <Color PropertyName="color" blue="d9" green="c5" red="c6" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -642,7 +656,7 @@
             <Container class="javax.swing.JPanel" name="fondoFunciones">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="99" red="cc" type="rgb"/>
+                  <Color blue="a6" green="6f" red="80" type="rgb"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -667,7 +681,7 @@
                 <Container class="javax.swing.JPanel" name="fondoOpciones">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
+                      <Color blue="bf" green="8f" red="be" type="rgb"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -720,6 +734,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JRadioButton" name="bttCantJu">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="bf" green="8f" red="be" type="rgb"/>
+                        </Property>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="bttGrupoFunciones"/>
                         </Property>
@@ -734,6 +751,9 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="bttCantGoles">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="bf" green="8f" red="be" type="rgb"/>
+                        </Property>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="bttGrupoFunciones"/>
                         </Property>
@@ -756,6 +776,9 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="bttMasExpu">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="bf" green="8f" red="be" type="rgb"/>
+                        </Property>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="bttGrupoFunciones"/>
                         </Property>
@@ -770,6 +793,9 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="bttJugadorasPosicion">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="bf" green="8f" red="be" type="rgb"/>
+                        </Property>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="bttGrupoFunciones"/>
                         </Property>
@@ -787,7 +813,7 @@
                 <Container class="javax.swing.JPanel" name="tapaPesta&#xf1;as">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="99" red="cc" type="rgb"/>
+                      <Color blue="a6" green="6f" red="80" type="rgb"/>
                     </Property>
                   </Properties>
                   <Constraints>

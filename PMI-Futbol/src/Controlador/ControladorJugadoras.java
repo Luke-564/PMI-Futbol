@@ -67,6 +67,7 @@ public class ControladorJugadoras {
     public Jugadora getJugadora() {
         return this.jugadora;
     }
+    
     public void setJugadora(Jugadora ju) {
         this.jugadora = ju;
     }

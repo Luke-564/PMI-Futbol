@@ -976,18 +976,29 @@ public class Menu extends javax.swing.JFrame {
         if (error) {
             JOptionPane.showMessageDialog(this,"Complete todos los campos.");
         } else {
-            //Guarda la jugadora a la lista
-            if(5 == controlador.cantidadJugadorasPorEquipo(club)) {
-                controlador.agregarJugadoraALaLista();
-                controlador.setJugadora(controlador.buscarDniJugadora(dni));
-                controlador.eliminarJugadora(dni);
-                JOptionPane.showMessageDialog(this,"Jugadora modificada con exito.");
+            try{
+                //Guarda la jugadora a la lista
+                if(5 == controlador.cantidadJugadorasPorEquipo(club)) {
+                    controlador.agregarJugadoraALaLista();
+                    controlador.setJugadora(controlador.buscarDniJugadora(dni));
+                    controlador.eliminarJugadora(dni);
+                    JOptionPane.showMessageDialog(this,"Jugadora modificada con exito.");
+                }
+                else if(7 == controlador.cantidadJugadorasPorEquipo(club)) {
+                    controlador.setJugadora(controlador.buscarDniJugadora(dni));
+                    controlador.eliminarJugadora(dni);
+                    controlador.agregarJugadoraALaLista();
+                    JOptionPane.showMessageDialog(this,"Jugadora modificada con exito.");
+                }
+                else {
+                    controlador.setJugadora(controlador.buscarDniJugadora(dni));
+                    controlador.eliminarJugadora(dni);
+                    controlador.agregarJugadoraALaLista();
+                    JOptionPane.showMessageDialog(this,"Jugadora modificada con exito.");
+                }
             }
-            if(7 == controlador.cantidadJugadorasPorEquipo(club)) {
-                controlador.setJugadora(controlador.buscarDniJugadora(dni));
-                controlador.eliminarJugadora(dni);
-                controlador.agregarJugadoraALaLista();
-                JOptionPane.showMessageDialog(this,"Jugadora modificada con exito.");
+            catch(RuntimeException e){
+                JOptionPane.showMessageDialog(this,"NO se pudo.");
             }
         }
         
@@ -1061,15 +1072,15 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nombre = txtBuscar.getText().toUpperCase();
         ControladorJugadoras controlador = new ControladorJugadoras();
+        //Elimina contenido anterior de la tabla
+        while (modelJugadoras.getRowCount() > 0) {
+            modelJugadoras.removeRow(0);
+        }  
         for (int i = 0; i < controlador.busqueda_Nombre(nombre).size(); i++) {
             controlador.guardarJugadora(controlador.busqueda_Nombre(nombre), i);
             
             //Crea el objeto que tendra las filas de la tabla
-            Object[] fila = new Object[6];
-            //Elimina contenido anterior de la tabla
-            while (modelJugadoras.getRowCount() > 0) {
-                modelJugadoras.removeRow(0);
-            }          
+            Object[] fila = new Object[6];        
             //Va guardando los datos correspondientes en las filas del objeto
             fila[0] = controlador.getDniJugadora();
             fila[3] = controlador.getClubJugadora();
@@ -1084,18 +1095,14 @@ public class Menu extends javax.swing.JFrame {
             controlador.setJugadora(controlador.buscarDniJugadora(nombre));
             
             //Crea el objeto que tendra las filas de la tabla
-            Object[] fila = new Object[6];
-            //Elimina contenido anterior de la tabla
-            while (modelJugadoras.getRowCount() > 0) {
-                modelJugadoras.removeRow(0);
-            }          
+            Object[] fila = new Object[6];        
             //Va guardando los datos correspondientes en las filas del objeto
             fila[0] = controlador.getDniJugadora();
             fila[3] = controlador.getClubJugadora();
             fila[1] = controlador.getNombreJugadora();
             fila[2] = controlador.getApellidoJugadora();
             fila[4] = controlador.getPosicionJugadora();
-            fila[5] = controlador.getDniJugadora();
+            fila[5] = controlador.getGolesJugadora();
             //Guarda las filas en la tabla
             modelJugadoras.addRow(fila);
         }
@@ -1104,11 +1111,7 @@ public class Menu extends javax.swing.JFrame {
                 controlador.guardarJugadora(controlador.busquedaApellido(nombre), i);
             
                 //Crea el objeto que tendra las filas de la tabla
-                Object[] fila = new Object[6];
-                //Elimina contenido anterior de la tabla
-                while (modelJugadoras.getRowCount() > 0) {
-                    modelJugadoras.removeRow(0);
-                }          
+                Object[] fila = new Object[6];         
                 //Va guardando los datos correspondientes en las filas del objeto
                 fila[0] = controlador.getDniJugadora();
                 fila[3] = controlador.getClubJugadora();
